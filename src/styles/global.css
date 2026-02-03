@@ -9,8 +9,8 @@
 
 body {
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #0b0b0f;
-  color: white;
+  background: #f9f9f9;
+  color: rgb(1, 1, 1);
   overflow-x: hidden;
 }
 
@@ -37,7 +37,7 @@ button {
 
 .navbar a {
   margin-left: 1.5rem;
-  color: #cfcfd6;
+  color: #000000;
   font-weight: 500;
 }
 
@@ -52,7 +52,7 @@ button {
   position: relative;
   min-height: 120vh;
   width: 100%;
-  background: #0b0b0f;
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,7 +113,7 @@ button {
   text-align: center;
   max-width: 900px;
   padding: 0 24px;
-  color: white;
+  color: rgb(0, 0, 0);
   margin-top: -10vh;
 }
 
@@ -128,7 +128,7 @@ button {
 
 .hero-content h1 span {
   display: block;
-  background: linear-gradient(180deg, #ffffff 30%, #666666 100%);
+  background: linear-gradient(180deg, #000000 30%, #666666 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -136,7 +136,7 @@ button {
 /* subtitle */
 .hero-content p {
   font-size: clamp(1.1rem, 1.6vw, 1.5rem);
-  color: #aaa;
+  color: #000000;
   margin-bottom: 3rem;
   max-width: 650px;
   margin-left: auto;
@@ -191,7 +191,7 @@ button {
 .headline-section {
   padding: 3rem 1rem;
   text-align: center;
-  background: #0b0b0f;
+  background: #ffffff;
   position: relative;
   z-index: 5;
   /* border: 2px solid lime; */
@@ -205,7 +205,7 @@ button {
 
 .headline-section p {
   font-size: clamp(1rem, 1.5vw, 1.3rem);
-  color: #ccc;
+  color: #010101;
   max-width: 720px;
   margin: 0 auto;
   line-height: 1.6;
@@ -234,7 +234,7 @@ button {
   font-size: 0.8rem;
   font-weight: 500;
   color: white;
-  background: #343435;           /* primary blue */
+  background: #7f7f81;           /* primary blue */
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -291,3 +291,98 @@ section {
   z-index: 5;
 }
 
+
+/* feature card */
+/* SERVICES SECTION */
+
+.services {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.services-scroll {
+  width: 100%;
+  overflow: hidden;
+}
+
+.services-track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: scrollLoop 50s linear infinite;
+}
+
+.service-card {
+  min-width: 420px;
+  height: 320px;
+  padding: 2rem;
+  background: rgba(197, 197, 205, 0.8);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  color: rgb(0, 0, 0);
+  /* text-align: center; */
+}
+
+/* Infinite loop */
+@keyframes scrollLoop {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause on hover (nice UX) */
+.services-track:hover {
+  animation-play-state: paused;
+}
+
+
+/* =========================
+   video SECTION
+========================= */
+.video-section {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;           /* adjust height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  filter: brightness(0.5);     /* darken video for better text contrast */
+}
+
+.video-overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+}
+
+.video-content h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.video-content p {
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
