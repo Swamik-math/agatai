@@ -3,6 +3,7 @@ import Hero from '../components/Hero'
 import FeatureCard from '../components/FeatureCard'
 import Footer from '../components/Footer'
 import videoBg from "../assets/videoplayback.mp4"; 
+import PizzaCarousel from "../components/PizzaCarousel";
 
 
 export default function Home() {
@@ -24,6 +25,13 @@ return (
   <button className="feature-btn">AI/ML</button>
   <button className="feature-btn">Web Development</button>
 </section>
+
+{/* ===================== */}
+
+<section className="my-12 carousel-section">
+  <PizzaCarousel />
+</section>
+
 
 
 {/* new headline section */}
