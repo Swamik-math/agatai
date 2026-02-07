@@ -1,9 +1,12 @@
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
-import FeatureCard from '../components/FeatureCard'
+
 import Footer from '../components/Footer'
 import videoBg from "../assets/videoplayback.mp4"; 
 import PizzaCarousel from "../components/PizzaCarousel";
+import webDevImg1 from "../assets/feature/source2.jpg";
+import webDevImg2 from "../assets/feature/source3.jpg";
+
 
 
 export default function Home() {
@@ -18,13 +21,7 @@ return (
     <p> a technology-driven software company delivering high-quality web, mobile, and AI-powered solutions using modern tech stacks.</p>
 </section>
 
-<section className="features">
-  <button className="feature-btn">Text to Video</button>
-  <button className="feature-btn">AI Editing</button>
-  <button className="feature-btn">Fast Generation</button>
-  <button className="feature-btn">AI/ML</button>
-  <button className="feature-btn">Web Development</button>
-</section>
+
 
 {/* ===================== */}
 
@@ -47,39 +44,41 @@ return (
     <div className="services-track">
       
       <div className="service-card">
-        <h3>🌐 Web Development</h3>
+        <h3>Web Development</h3>
         <p>Modern, scalable websites and web apps.</p>
-        <img src="/images/web-dev.png" alt="Web Development" />
+        <img src={webDevImg1} alt="Web Development" />
+
       </div>
 
       <div className="service-card">
-        <h3>📱 Mobile App Development</h3>
+        <h3>Mobile App Development</h3>
         <p>Android & iOS apps.</p>
+        <img src={webDevImg2} alt="Web Development" />
       </div>
 
       <div className="service-card">
-        <h3>🤖 AI & Automation</h3>
+        <h3>AI & Automation</h3>
         <p>AI tools & smart systems.</p>
       </div>
 
       <div className="service-card">
-        <h3>⚙️ Custom Software</h3>
+        <h3>Custom Software</h3>
         <p>Tailored solutions.</p>
       </div>
 
       <div className="service-card">
-        <h3>🛠 Maintenance & Support</h3>
+        <h3>Maintenance & Support</h3>
         <p>Ongoing updates.</p>
       </div>
 
       {/* DUPLICATE for infinite scroll */}
       <div className="service-card">
-        <h3>🌐 Web Development</h3>
+        <h3>Web Development</h3>
         <p>Modern, scalable websites and web apps.</p>
       </div>
 
       <div className="service-card">
-        <h3>📱 Mobile App Development</h3>
+        <h3>Mobile App Development</h3>
         <p>Android & iOS apps.</p>
       </div>
 
