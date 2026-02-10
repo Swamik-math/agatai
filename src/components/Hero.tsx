@@ -1,53 +1,62 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { easeOut, motion, useScroll, useTransform } from "framer-motion";
+import { scroll } from "framer-motion";
 import demo1 from "../assets/demo1.mp4";
 import demo2 from "../assets/demo2.mp4";
 import demo3 from "../assets/demo3.mp4";
 import demo4 from "../assets/demo4.mp4";
 import demo5 from "../assets/demo5.mp4";
 import "./Hero.css";
-
+import { useState } from "react";
+import { useVelocity } from "framer-motion";
+import { useMotionValueEvent } from "framer-motion";
+import { useSpring } from "framer-motion";
 const videos = [
-  { src: demo1, x: "-35%", y: "-35%", delay: 0, scale: 1 },
-  { src: demo2, x: "35%", y: "-35%", delay: 0.2, scale: 1.05 },
-  { src: demo3, x: "-35%", y: "35%", delay: 0.4, scale: 0.95 },
-  { src: demo4, x: "35%", y: "35%", delay: 0.6, scale: 1 },
-  { src: demo5, x: "0%", y: "-50%", delay: 0.8, scale: 1.1 },
+  { src: demo1, x: "100%", y: "-150%",ix : "0%" , iy : "0%", delay: 0, scale: 1 },
+  { src: demo2, x: "150%", y: "150%",ix : "5%" , iy : "00%", delay: 1, scale: 1 },
+  { src: demo3, x: "-160%", y: "-160%",ix : "7%" , iy : "4%", delay: 1.5, scale: 1 },
+  { src: demo4, x: "-110%", y: "105%",ix : "9%" , iy : "6%", delay: 1.8, scale: 1 },
+  { src: demo5, x: "-90%", y: "-80%",ix : "5%" , iy : "0%", delay: 2, scale: 1},
 ];
 
 export default function Hero() {
   const { scrollYProgress } = useScroll();
-
-  const fadeOut = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-
+  const [scrollvalue, setScrollvalue] = useState(5);
+  const {scrollY} = useScroll();
+  const velocity = useVelocity(scrollY)
+  const fadeOut = useTransform(velocity, [0, 0.6], [1, 0]);
   return (
     <section className="hero">
       {/* VIDEO LAYER */}
-      <motion.div className="hero-videos" style={{ opacity: fadeOut }}>
+      <motion.div className="hero-videos" style={{ opacity: fadeOut}}  >
         {videos.map((video, index) => (
           <motion.video
             key={index}
             className="hero-video"
+          
             src={video.src}
             autoPlay
             muted
             loop
             playsInline
             initial={{
-              x: "0%",
-              y: "0%",
+              x: "-70%",
+              y: 0,
               opacity: 0,
-              scale: 0.85,
+              scale: 0.01,
+              filter : "blur(10px)"
             }}
             animate={{
               x: video.x,
               y: video.y,
-              opacity: 0.6,
+              opacity: 0.8,
               scale: video.scale,
+              filter : "blur(0px)"
             }}
             transition={{
-              duration: 1.4,
-              delay: video.delay,
-              ease: [0.23, 1, 0.32, 1],
+              duration: 4,
+              delay: video.delay ,
+              ease: [easeOut],
+              repeat: Infinity,
             }}
           />
         ))}
