@@ -229,20 +229,20 @@ section {
 /* ===== PIZZA CAROUSEL ===== */
 .pizza-carousel {
   position: relative;
-  min-height: 100vh;
+  min-height: 90vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #000000;
   padding-bottom: 5rem;
-  border-radius: 2rem;
+  border-radius: 1rem;
 }
 
 /* Text */
 .pizza-text {
   position: absolute;
-  top: 12%;
+  top: 7%;
   text-align: center;
   max-width: 520px;
   z-index: 20;
@@ -251,6 +251,7 @@ section {
 .pizza-title {
   font-size: clamp(22px, 3vw, 38px);
   font-weight: 700;
+  color: antiquewhite;
 }
 
 .pizza-description {
@@ -282,28 +283,6 @@ section {
   pointer-events: none;
 }
 
-/* Decorative images */
-.deco {
-  position: absolute;
-  width: 90px;        /* 👈 reduced size */
-  pointer-events: none;
-}
-
-.top-left {
-  top: 20px;
-  left: 20px;
-}
-
-.top-right {
-  top: 20px;
-  right: 20px;
-}
-
-.bottom-center {
-  bottom: 120px;
-  left: 50%;
-  transform: translateX(-50%);
-}
 
 /* Nav buttons */
 .nav-button {
@@ -318,3 +297,52 @@ section {
 .nav-button.left { left: 24px; }
 .nav-button.right { right: 24px; }
 
+
+/* service card buttons */
+.services-cta {
+  text-align: center;
+  background: #ffffff;
+  color: white;
+}
+
+.services-cta h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.services-cta p {
+  max-width: 650px;
+  margin: 0 auto 2.5rem;
+  font-size: 1.05rem;
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+.services-cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.cta-secondary {
+  padding: 0.9rem 2.2rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* secondary button */
+.cta-secondary {
+  background: transparent;
+  border: transparent;
+  color: #000000;
+}
+
+.cta-secondary:hover {
+  background: rgba(88, 101, 242, 0.1);
+  transform: translateY(-2px);
+}
