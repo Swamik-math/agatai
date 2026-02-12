@@ -4,10 +4,8 @@ import Hero from '../components/Hero'
 import Footer from '../components/Footer'
 import videoBg from "../assets/videoplayback.mp4"; 
 import PizzaCarousel from "../components/PizzaCarousel";
-
 import webDevImg1 from "../assets/feature/source2.jpg";
 import webDevImg2 from "../assets/feature/source3.jpg";
-
 
 
 
@@ -39,53 +37,54 @@ return (
     <p> We design and develop web apps, mobile applications, AI-powered systems, and custom software—delivering scalable, secure, and reliable solutions with ongoing support.</p>
 </section>
 
-<section className="services-cta">
-  <div className="services-cta-actions">
-    <button onClick={() => setActiveService("web")}>Web</button>
-    <button onClick={() => setActiveService("app")}>App</button>
-    <button onClick={() => setActiveService("ai")}>AI/ML</button>
-    <button onClick={() => setActiveService("software")}>Software</button>
-    <button onClick={() => setActiveService("support")}>Support</button>
+
+
+<section className="services">
+  <div className="services-scroll">
+    <div className="services-track">
+      
+      <div className="service-card">
+        <h3>Web Development</h3>
+        <p>Modern, scalable websites and web apps.</p>
+        <img src={webDevImg1} alt="Web Development" />
+
+      </div>
+
+      <div className="service-card">
+        <h3>Mobile App Development</h3>
+        <p>Android & iOS apps.</p>
+        <img src={webDevImg2} alt="Web Development" />
+      </div>
+
+      <div className="service-card">
+        <h3>AI & Automation</h3>
+        <p>AI tools & smart systems.</p>
+      </div>
+
+      <div className="service-card">
+        <h3>Custom Software</h3>
+        <p>Tailored solutions.</p>
+      </div>
+
+      <div className="service-card">
+        <h3>Maintenance & Support</h3>
+        <p>Ongoing updates.</p>
+      </div>
+
+      {/* DUPLICATE for infinite scroll */}
+      <div className="service-card">
+        <h3>Web Development</h3>
+        <p>Modern, scalable websites and web apps.</p>
+      </div>
+
+      <div className="service-card">
+        <h3>Mobile App Development</h3>
+        <p>Android & iOS apps.</p>
+      </div>
+
+    </div>
   </div>
 </section>
-
-
-const servicesData = [
-  {
-    id: 1,
-    category: "web",
-    title: "Web Development",
-    desc: "Modern, scalable websites and web apps.",
-    img: webDevImg1,
-  },
-  {
-    id: 2,
-    category: "app",
-    title: "Mobile App Development",
-    desc: "Android & iOS apps.",
-    img: webDevImg2,
-  },
-  {
-    id: 3,
-    category: "ai",
-    title: "AI & Automation",
-    desc: "AI tools & smart systems.",
-  },
-  {
-    id: 4,
-    category: "software",
-    title: "Custom Software",
-    desc: "Tailored solutions.",
-  },
-  {
-    id: 5,
-    category: "support",
-    title: "Maintenance & Support",
-    desc: "Ongoing updates.",
-  },
-];
-
-
 
 
 {/* Video Background Section */}
@@ -116,3 +115,4 @@ const servicesData = [
 </>
 )
 }
+
