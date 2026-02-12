@@ -101,7 +101,7 @@ section {
 /* SERVICES SECTION */
 
 .services {
-  height: 70vh;
+  height: 90vh;
   display: flex;
   align-items: center;
 
@@ -297,6 +297,7 @@ section {
   text-align: center;
   margin-bottom: 60px;
   background: black;
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 20px rgba(168, 168, 255, 0.3);

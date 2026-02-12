@@ -1,5 +1,5 @@
 import { easeOut, motion, useScroll, useTransform } from "framer-motion";
-import { scroll } from "framer-motion";
+
 import demo1 from "../assets/demo1.mp4";
 import demo2 from "../assets/demo2.mp4";
 import demo3 from "../assets/demo3.mp4";
@@ -8,8 +8,8 @@ import demo5 from "../assets/demo5.mp4";
 import "./Hero.css";
 import { useState } from "react";
 import { useVelocity } from "framer-motion";
-import { useMotionValueEvent } from "framer-motion";
-import { useSpring } from "framer-motion";
+// import { useMotionValueEvent } from "framer-motion";
+// import { useSpring } from "framer-motion";
 const videos = [
   { src: demo1, x: "100%", y: "-150%",ix : "0%" , iy : "0%", delay: 0, scale: 1 },
   { src: demo2, x: "150%", y: "150%",ix : "5%" , iy : "00%", delay: 1, scale: 1 },
@@ -70,7 +70,7 @@ export default function Hero() {
         transition={{ duration: 1, delay: 1 }}
         style={{ opacity: fadeOut }}
       >
-        
+
         <h1>
           We Build Scalable Web &{" "}
           <span>Mobile Solutions for the Future</span>

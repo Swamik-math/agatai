@@ -9,9 +9,6 @@ const PizzaCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
 
-  const rotationPerItem = 360 / pizzas.length;
-  const rotationAngle = -currentIndex * rotationPerItem;
-
   const goToNext = useCallback(() => {
     setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % pizzas.length);
