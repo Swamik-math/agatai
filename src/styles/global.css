@@ -23,33 +23,13 @@ button {
   font-family: inherit;
 }
 
-/* =========================
-   NAVBAR
-========================= */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.2rem 2.5rem;
-  position: relative;
-  z-index: 20;
-}
 
-.navbar a {
-  margin-left: 1.5rem;
-  color: #000000;
-  font-weight: 500;
-}
-
-.navbar a:hover {
-  color: white;
-}
 
 /* =========================
    HEADLINE SECTION
 ========================= */
 .headline-section {
-  padding:10rem 10rem 6rem 10rem;
+  padding:10rem 8rem 3rem 8rem;
   text-align: center;
   background: #ffffff;
   position: relative;
@@ -61,7 +41,7 @@ button {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
   margin: 0 auto 1rem;   /* top | left-right | bottom */
-  max-width: 650px;      /* 🔹 limit text width */
+  max-width: 900px;      /* 🔹 limit text width */
   padding: 0 1rem;       /* 🔹 safe spacing on mobile */
   line-height: 1.2;
   text-align: center;
@@ -131,12 +111,12 @@ section {
   scroll-behavior: smooth;
   background-color: white;
   padding: 10px;
-  padding-bottom: 6rem;
+  padding-bottom: 10rem;
 }
 
 .service-card img {
   width: 100%;
-  height: 200px;              /* control image height */
+  height: 250px;              /* control image height */
   object-fit: cover;          /* crop nicely */
   border-radius: 12px;
   margin-top: 1rem;
@@ -167,7 +147,7 @@ section {
 
 .service-card {
   min-width: 420px;
-  height: 320px;
+  height: 390px;
   padding: 2rem;
   background: rgba(221, 221, 230, 0.8);
   backdrop-filter: blur(14px);
@@ -283,7 +263,6 @@ section {
   pointer-events: none;
 }
 
-
 /* ========== Nav buttons =========== */
 .nav-button {
   position: absolute;
@@ -298,51 +277,87 @@ section {
 .nav-button.right { right: 24px; }
 
 
-/* ========== service card buttons ========= */
-.services-cta {
+
+/* home bottom description */
+/* Dream Machine FAQ Styles */
+.dream-machine-faq {
+  padding: 80px 20px;
+  background: white;
+  
+}
+
+.faq-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.faq-title {
+  font-size: 2.5rem;
+  font-weight: 700;
   text-align: center;
-  background: #ffffff;
-  color: white;
+  margin-bottom: 60px;
+  background: black;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(168, 168, 255, 0.3);
 }
 
-.services-cta h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
-  margin-bottom: 1rem;
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 30px;
 }
 
-.services-cta p {
-  max-width: 650px;
-  margin: 0 auto 2.5rem;
-  font-size: 1.05rem;
-  opacity: 0.85;
-  line-height: 1.6;
-}
-
-.services-cta-actions {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.cta-secondary {
-  padding: 0.9rem 2.2rem;
-  border-radius: 999px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
+.faq-item {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px;
   transition: all 0.3s ease;
 }
 
-/* secondary button */
-.cta-secondary {
-  background: transparent;
-  border: transparent;
+.faq-item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(168, 168, 255, 0.5);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.faq-item h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
   color: #000000;
 }
 
-.cta-secondary:hover {
-  background: rgba(88, 101, 242, 0.1);
-  transform: translateY(-2px);
+.faq-item p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #000000;
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .faq-title {
+    font-size: 2rem;
+  }
+  
+  .faq-item {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dream-machine-faq {
+    padding: 60px 15px;
+  }
+  
+  .faq-title {
+    font-size: 1.8rem;
+  }
 }

@@ -23,7 +23,7 @@ export default function Hero() {
   const [scrollvalue, setScrollvalue] = useState(5);
   const {scrollY} = useScroll();
   const velocity = useVelocity(scrollY)
-  const fadeOut = useTransform(velocity, [0, 0.6], [1, 0]);
+  const fadeOut = useTransform(velocity, [0, 0.5], [1, 0]);
   return (
     <section className="hero">
       {/* VIDEO LAYER */}
@@ -43,7 +43,7 @@ export default function Hero() {
               y: 0,
               opacity: 0,
               scale: 0.01,
-              filter : "blur(10px)"
+              filter : "blur(7px)"
             }}
             animate={{
               x: video.x,
@@ -70,6 +70,7 @@ export default function Hero() {
         transition={{ duration: 1, delay: 1 }}
         style={{ opacity: fadeOut }}
       >
+        
         <h1>
           We Build Scalable Web &{" "}
           <span>Mobile Solutions for the Future</span>
