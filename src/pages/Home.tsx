@@ -4,6 +4,7 @@ import Hero from '../components/Hero'
 import Footer from '../components/Footer'
 import videoBg from "../assets/videoplayback.mp4"; 
 import PizzaCarousel from "../components/PizzaCarousel";
+import Service from "../components/Service";
 import webDevImg1 from "../assets/feature/source2.png";
 import webDevImg2 from "../assets/feature/source3.png";
 import webDevImg3 from "../assets/feature/source4.png";
@@ -34,7 +35,9 @@ return (
   <PizzaCarousel />
 </section>
 
-
+<section className="my-24 carousel-section">
+  <Service />
+</section>
 
 {/* new headline section */}
 <section className="headline-section">
