@@ -55,7 +55,6 @@ return (
         <h3>Web Development</h3>
         <p>We build fast, secure, and scalable</p><p> websites using modern technologies.</p>
         <img src={webDevImg1} alt="Web Development" />
-solutions
       </div>
 
       <div className="service-card">
