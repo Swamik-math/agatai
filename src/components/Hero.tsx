@@ -67,7 +67,7 @@ export default function Hero() {
               duration: duration.get(),
               delay: video.delay ,
               ease: [easeOut],
-              // repeat: Infinity,
+              repeat: Infinity,
             }}
           />
         ))}

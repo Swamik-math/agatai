@@ -1,5 +1,5 @@
 import {useRef, useEffect } from "react";
-import Navbar from '../components/Navbar'
+
 import Hero from '../components/Hero'
 
 import Footer from '../components/Footer'
@@ -46,7 +46,7 @@ const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
 
 return (
 <>
-<Navbar />
+
 <Hero />
 
 {/* NEW HEADLINE SECTION */}

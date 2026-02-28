@@ -1,0 +1,106 @@
+.career-page{
+    padding-top: 50px;
+    background: #ffffff;
+    min-height: 100vh;
+}
+
+/* backgonund image blur effect */
+.careers-page {
+  position: relative;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* Bottom blur layer */
+.careers-page::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 500px; /* adjust blur height */
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(8px);
+
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+
+  pointer-events: none;
+}
+
+
+
+.career-hero{
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.career-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem ;
+}
+
+.career-hero p {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.career-jobs {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+}
+
+.career-jobs h2 {
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.job-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    background: rgb(227, 220, 220);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.job-card:hover{
+    transform: translate(-4px);
+    background: #eaeaea;
+}
+
+.job-card h3 {
+    margin: 0;
+}
+
+.job-card p {
+    margin: 6px 0 0;
+    opacity: 0.7;
+}
+
+.job-card button {
+    padding: 10px 22px;
+    border-radius: 999px;
+    border: none;
+    background: black;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+.job-card button:hover{
+    transform: translate(-2px);
+}
