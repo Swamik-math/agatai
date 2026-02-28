@@ -110,9 +110,26 @@ section {
 
   scroll-behavior: smooth;
   background-color: white;
-  padding: 10px;
+  padding: 4rem 0;
+  gap: 20px;
   padding-bottom: 10rem;
 }
+
+.services-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  cursor: grab;
+  scroll-behavior: smooth;
+}
+
+.services-scroll.active {
+  cursor: grabbing;
+}
+
+.services-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 
 
 .service-card img {
@@ -126,14 +143,6 @@ section {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
-/* hide scrollbar (optional but recommended) */
-.services::-webkit-scrollbar {
-  display: none;
-}
-.services {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
 
 .services-track {
   display: flex;
@@ -147,13 +156,14 @@ section {
 }
 
 .service-card {
-  min-width: 420px;
+  min-width: 300px;
   height: 390px;
   padding: 2rem;
   background: rgba(221, 221, 230, 0.8);
   backdrop-filter: blur(14px);
   border-radius: 12px;
   color: rgb(0, 0, 0);
+  flex-shrink: 0;
 }
 
 

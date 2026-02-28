@@ -1,3 +1,4 @@
+import {useRef, useEffect } from "react";
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 
@@ -16,6 +17,33 @@ import webDevImg7 from "../assets/feature/source8.png";
 
 
 export default function Home() {
+
+ const scrollRef = useRef<HTMLDivElement | null>(null);
+
+const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+  const slider = scrollRef.current;
+  if (!slider) return;
+
+  let startX = e.pageX - slider.offsetLeft;
+  let scrollLeft = slider.scrollLeft;
+
+  const onMouseMove = (e: MouseEvent) => {
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.2;
+    slider.scrollLeft = scrollLeft - walk;
+  };
+
+  const onMouseUp = () => {
+    window.removeEventListener("mousemove", onMouseMove);
+    window.removeEventListener("mouseup", onMouseUp);
+  };
+
+  window.addEventListener("mousemove", onMouseMove);
+  window.addEventListener("mouseup", onMouseUp);
+};
+
+  
+
 return (
 <>
 <Navbar />
@@ -48,7 +76,7 @@ return (
 
 
 <section className="services">
-  <div className="services-scroll">
+  <div className="services-scroll" ref = {scrollRef} onMouseDown = {handleMouseDown}>
     <div className="services-track">
       
       <div className="service-card">

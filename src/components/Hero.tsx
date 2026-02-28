@@ -1,4 +1,5 @@
 import { easeOut, motion, useScroll, useTransform, useVelocity, useMotionValueEvent } from "framer-motion";
+import { useMotionValue } from "framer-motion";
 
 import demo1 from "../assets/demo1.mp4";
 import demo2 from "../assets/demo2.mp4";
@@ -19,17 +20,20 @@ const videos = [
 export default function Hero() {
   const { scrollYProgress } = useScroll();
   const [scrollvalue, setScrollvalue] = useState(5);
-  const [animationDuration, setAnimationDuration] = useState(4);
+  const duration = useMotionValue(4);
   const { scrollY } = useScroll();
   const velocity = useVelocity(scrollY);
   const fadeOut = useTransform(velocity, [0, 0.5], [1, 0]);
+  const speedMultiplier = 0.4;
+  const moveX = useTransform(scrollY, (value) => value * speedMultiplier);
+
 
   // Update animation duration based on scroll velocity
   useMotionValueEvent(velocity, "change", (latest) => {
     // Higher velocity = shorter duration (faster animation)
     // Map velocity range to duration range (faster scrolling = faster animation)
     const newDuration = Math.max(1, 4 - latest * 0.3);
-    setAnimationDuration(newDuration);
+    duration.set(newDuration);
   });
   return (
     <section className="hero">
@@ -60,10 +64,10 @@ export default function Hero() {
               filter : "blur(0px)"
             }}
             transition={{
-              duration: animationDuration,
+              duration: duration.get(),
               delay: video.delay ,
               ease: [easeOut],
-              repeat: Infinity,
+              // repeat: Infinity,
             }}
           />
         ))}
