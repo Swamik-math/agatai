@@ -24,9 +24,9 @@ export default function Login() {
       {/* RIGHT SIDE CONTENT */}
       <div className="login-right">
         <div className="login-content">
-          <h1>Make it with Dream Machine</h1>
+          <h1>Power Your Ideas with AIGETAI</h1>
           <p>
-            Production-ready images and videos with precision, speed, and control
+             Advanced AI, scalable systems, and data-driven innovation for the next generation.
           </p>
 
           <button className="google-btn">Sign in with Google</button>
