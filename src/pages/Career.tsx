@@ -6,7 +6,7 @@ export default function Career() {
         
         <div className="career-page"
         style={{
-    backgroundImage: `url(${careersBg})`,
+    backgroundColor: "#dcdbdb",
   }}
   >
             <div className="careers-overlay">
@@ -22,6 +22,32 @@ export default function Career() {
                 </p>
             </section>
 
+{/* video section */}
+            <section className="career-video">
+  <h2>Life at AIGETAI</h2>
+
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="career-video-player"
+  >
+    <source src="https://static.cdn-luma.com/files/a1ecc8588bca8e63/careers-hero-video.mp4#t=0.001" type="video/mp4" />
+  </video>
+</section>
+
+            <section className="career-details">
+                <h1>We are building a new kind of mind</h1>
+                <p>
+                    We believe real-world physics is the path to general intelligence.
+                    We unite research, product, and go-to-market into one engine.
+                </p>
+                <button>See open roles</button>
+            </section>
+
+
+                {/* career card section */}
             <section className="career-jobs">
                 <h2>Open Positions</h2>
             

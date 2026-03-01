@@ -74,7 +74,7 @@
     padding: 24px;
     margin-bottom: 20px;
     border-radius: 16px;
-    background: rgb(227, 220, 220);
+    background: rgb(216, 210, 210);
     transition: transform 0.3s ease, background 0.3s ease;
 }
 
@@ -103,4 +103,58 @@
 }
 .job-card button:hover{
     transform: translate(-2px);
+}
+
+/* career video section */
+.career-video {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.career-video h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+}
+.career-video-player {
+  width: 95%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* career discription */
+.career-details{
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.career-details h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem ;
+}
+
+.career-details p {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    opacity: 0.8;
+    padding-bottom: 30px;
+}
+
+.career-details button {
+  padding: 0.8rem 1.8rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.career-details button:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
 }

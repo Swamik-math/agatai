@@ -10,12 +10,13 @@ function App() {
   
     <div className="app-container">
       <Navbar />
-
-      <Routes>
-        <Route path = "/Career" element={<Career />} />
-      </Routes>
-      <Home />
+      
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/career" element={<Career />} />
+        </Routes>
     </div>
+    
   
   );
 }
