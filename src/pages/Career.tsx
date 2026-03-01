@@ -1,5 +1,5 @@
 import "./Career.css";
-import careersBg from "../assets/careers-bg.jpg";
+
 
 export default function Career() {
     return (

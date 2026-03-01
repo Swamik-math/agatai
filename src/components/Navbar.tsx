@@ -25,7 +25,7 @@ export default function Navbar() {
           <Link to="/features">Features</Link>
           <Link to="/pricing">Pricing</Link>
           <Link to="/Career" className="login-btn">Career</Link>
-          <Link to="/try" className="cta-btn">Try Now</Link>
+          <Link to="/login" className="login-btn">Login</Link>
         </div>
       </div>
     </nav>
