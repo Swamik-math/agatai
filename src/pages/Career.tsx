@@ -47,6 +47,46 @@ export default function Career() {
             </section>
 
 
+             {/* WHY WORK WITH US */}
+      <section className="career-benefits">
+        <h2>Why Work With Us</h2>
+
+        <div className="benefit-grid">
+          <div className="benefit-card">
+            <h3>Innovation</h3>
+            <p>
+              Work on cutting-edge technologies in AI, machine learning,
+              and scalable systems.
+            </p>
+          </div>
+
+          <div className="benefit-card">
+            <h3>Growth</h3>
+            <p>
+              Continuous learning, mentorship, and opportunities to grow
+              your career.
+            </p>
+          </div>
+
+          <div className="benefit-card">
+            <h3>Global Team</h3>
+            <p>
+              Collaborate with talented developers and designers from
+              around the world.
+            </p>
+          </div>
+
+          <div className="benefit-card">
+            <h3>Flexible Work</h3>
+            <p>
+              Remote-friendly environment with flexible schedules and
+              work-life balance.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
                 {/* career card section */}
             <section className="career-jobs">
                 <h2>Open Positions</h2>
@@ -73,10 +113,26 @@ export default function Career() {
                     <p>Full Time • Remote </p>
                 </div>
                 <button>Apply</button>
+            </div>  
+            </section>
+
+        {/* hiring process */}
+        <section className="career-process">
+            <h2>Our Hiring Process</h2>
+
+            <div className="process-grid">
+                <div className="process-steps">
+                    <h3>1.Apply</h3>
+                    <p>Submit your application and portfolio.</p>
+                </div>
+
+                <div className="process-steps">
+
+                </div>
+
             </div>
 
-                
-            </section>
+        </section>
 
 
         </div>
