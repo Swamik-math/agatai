@@ -22,7 +22,8 @@ margin-bottom:15px;
 .enquiry-hero p{
 max-width:600px;
 margin:auto;
-color:#555;
+color:#3a3939;
+font-weight: 500px;
 }
 
 /* FORM */
@@ -73,4 +74,15 @@ border-radius:6px;
 cursor:pointer;
 width:100%;
 font-size:16px;
+
+display:block;        /* makes margin work */
+width:fit-content;    /* keeps button compact */
+margin:20px auto 0;   /* centers horizontally */
+transition: all 0.3s ease;    
+}
+
+button:hover{
+    background: #333;
+    transform: translate(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }

@@ -10,7 +10,7 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-         AIGETAI <span>Dream Machine</span>
+         AIGETAI 
         </Link>
 
          {/* Hamburger */}

@@ -1,4 +1,4 @@
-.career-page{
+.careers-page{
     padding-top: 50px;
     background: #ffffff;
     min-height: 100vh;
@@ -77,6 +77,11 @@
     transition: transform 0.3s ease, background 0.3s ease;
 }
 
+.job-card > div{
+    flex: 1;
+}
+
+
 .job-card:hover{
     transform: translate(-4px);
     background: #eaeaea;
@@ -92,13 +97,18 @@
 }
 
 .job-card button {
-    padding: 10px 22px;
+    padding: 8px 14px;
     border-radius: 999px;
     border: none;
     background: black;
     color: white;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 400;
+
+    width: auto;
+
+       
+    
 }
 .job-card button:hover{
     transform: translate(-2px);
@@ -265,8 +275,12 @@ color:white;
 border-radius:8px;
 cursor:pointer;
 transition:0.3s;
+/* 
+width:fit-content;     
+    display:inline-block; */
 }
 
 .career-cta button:hover{
-background:#333;
+background:#414141;
+font-weight: 600;
 }

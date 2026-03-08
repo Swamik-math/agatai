@@ -4,7 +4,7 @@ import "./Career.css";
 export default function Career() {
     return (
         
-        <div className="career-page"
+        <div className="careers-page"
         style={{
     backgroundColor: "#dcdbdb",
   }}
@@ -88,6 +88,7 @@ export default function Career() {
 
                 {/* career card section */}
             <section className="career-jobs">
+                
                 <h2>Open Positions</h2>
             
             <div className="job-card">

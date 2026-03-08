@@ -1,3 +1,4 @@
+
 /* =========================
    GLOBAL RESET & BASE
 ========================= */
@@ -276,30 +277,46 @@ section {
 }
 
 /* ========== Nav buttons =========== */
-.nav-button {
-  position: absolute;
-  bottom: 120px;
-  background: #fff;
-  border-radius: 50%;
-  padding: 0.6rem;
-  z-index: 30;
-  cursor: pointer;
-  display: flex;             /* centre the SVG */
-  align-items: center;
-  justify-content: center;
+.nav-button{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+
+  width:44px;
+  height:44px;
+  aspect-ratio:1/1;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#807d7d;
+  border-radius:50%;
+  border:none;
+
+  cursor:pointer;
+  padding:0;
+  flex:0 0 44px;
+
+  z-index:30;
 }
 
-/* only needed if the arrow orientation ever gets flipped */
-.nav-button.left  svg { transform: none; }
-.nav-button.right svg { transform: none; }
+.nav-button.left{
+  left:40px;
+}
 
-/* you could also “flip” them manually:
-.nav-button.left  svg { transform: rotateY(180deg); }
-.nav-button.right svg { transform: rotateY(180deg); }
-*/
+.nav-button.right{
+  right:40px;
+}
+
+.nav-button svg{
+  width:20px;
+  height:20px;
+}
+
 
 /* home bottom description */
-Dream Machine FAQ Styles
+
 .dream-machine-faq {
   padding: 80px 20px;
   background: white;
