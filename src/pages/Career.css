@@ -144,7 +144,7 @@
 /* career discription */
 .career-details{
     text-align: left;
-    padding: 50px 20px;
+    padding: 50px 55px;
     display: flex;
   flex-direction: column;
   align-items: flex-start;   /* keeps everything left aligned */
@@ -166,6 +166,7 @@
   background-color: black;
   color: white;
   border: none;
+  margin-left: 40%;
   border-radius: 1000px;
   cursor: pointer;
 }
@@ -208,7 +209,7 @@
 /* company details */
 .career-comp{
 padding-top:20px;
-padding-bottom:180px;
+padding-bottom:100px;
 text-align:center;
 
 }

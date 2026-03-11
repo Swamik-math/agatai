@@ -111,6 +111,8 @@ export default function Career() {
             </div>
         </section>
 
+        <hr className="section-divider" />
+
 
              {/* WHY WORK WITH US */}
       <section className="blog-content">
