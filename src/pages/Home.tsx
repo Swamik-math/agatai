@@ -1,18 +1,65 @@
-import Navbar from '../components/Navbar'
+import {useRef, useEffect } from "react";
+
 import Hero from '../components/Hero'
 
 import Footer from '../components/Footer'
 import videoBg from "../assets/videoplayback.mp4"; 
 import PizzaCarousel from "../components/PizzaCarousel";
-import webDevImg1 from "../assets/feature/source2.jpg";
-import webDevImg2 from "../assets/feature/source3.jpg";
+import CircularGallery from '../pages/CircularGallery';
+import OrbitImages from "./OrbitImages";
+
+import Service from "../components/Service";
+import webDevImg1 from "../assets/feature/source2.png";
+import webDevImg2 from "../assets/feature/source3.png";
+import webDevImg3 from "../assets/feature/source4.png";
+import webDevImg4 from "../assets/feature/source5.png";
+import webDevImg5 from "../assets/feature/source6.png";
+import webDevImg6 from "../assets/feature/source7.png";
+import webDevImg7 from "../assets/feature/source8.png";
 
 
 
 export default function Home() {
+
+ const scrollRef = useRef<HTMLDivElement | null>(null);
+
+const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+  const slider = scrollRef.current;
+  if (!slider) return;
+
+  let startX = e.pageX - slider.offsetLeft;
+  let scrollLeft = slider.scrollLeft;
+
+  const onMouseMove = (e: MouseEvent) => {
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.2;
+    slider.scrollLeft = scrollLeft - walk;
+  };
+
+  const onMouseUp = () => {
+    window.removeEventListener("mousemove", onMouseMove);
+    window.removeEventListener("mouseup", onMouseUp);
+  };
+
+  window.addEventListener("mousemove", onMouseMove);
+  window.addEventListener("mouseup", onMouseUp);
+};
+
+
+const orbitImages = [
+    "https://picsum.photos/300/300?grayscale&random=1",
+  "https://picsum.photos/300/300?grayscale&random=2",
+  "https://picsum.photos/300/300?grayscale&random=3",
+  "https://picsum.photos/300/300?grayscale&random=4",
+  "https://picsum.photos/300/300?grayscale&random=5",
+  "https://picsum.photos/300/300?grayscale&random=6"
+];
+
+  
+
 return (
 <>
-<Navbar />
+
 <Hero />
 
 {/* NEW HEADLINE SECTION */}
@@ -25,11 +72,22 @@ return (
 
 {/* ===================== */}
 
-<section className="my-12 carousel-section">
-  <PizzaCarousel />
+ <div style={{ height: '600px', position: 'relative' }}>
+              <CircularGallery
+                bend={1}
+                textColor="#ffffff"
+                borderRadius={0.05}
+                scrollSpeed={2}
+                scrollEase={0.05}
+                />
+              </div>
+
+
+<section className="my-24 carousel-section">
+  <Service />
 </section>
 
-
+<hr className="section-divider" />
 
 {/* new headline section */}
 <section className="headline-section">
@@ -39,51 +97,85 @@ return (
 
 
 
+
+{/* orbit images */}
+<section className="orbit-section">
+  <OrbitImages
+    images={orbitImages}
+    shape="ellipse"
+    radiusX={570}
+    radiusY={100}
+    rotation={-8}
+    duration={65}
+    itemSize={140}
+    responsive={true}
+    radius={160}
+    direction="normal"
+    fill
+    showPath
+    paused={false}
+  />
+</section>
+
+
+<hr className="section-divider" />
+
+
 <section className="services">
-  <div className="services-scroll">
+  <div className="services-scroll" ref = {scrollRef} onMouseDown = {handleMouseDown}>
     <div className="services-track">
       
       <div className="service-card">
         <h3>Web Development</h3>
-        <p>Modern, scalable websites and web apps.</p>
+        <p>We build fast, secure, and scalable</p><p> websites using modern technologies.</p>
         <img src={webDevImg1} alt="Web Development" />
-
       </div>
 
       <div className="service-card">
         <h3>Mobile App Development</h3>
-        <p>Android & iOS apps.</p>
+        <p>We design and develop high-quality</p> <p> Android and iOS applications.</p>
         <img src={webDevImg2} alt="Web Development" />
       </div>
 
       <div className="service-card">
         <h3>AI & Automation</h3>
-        <p>AI tools & smart systems.</p>
+        <p>We create AI-powered systems to automate </p> <p>workflows and enhance decision-making.</p>
+        <img src={webDevImg3} alt="Web Development" />
       </div>
 
       <div className="service-card">
         <h3>Custom Software</h3>
-        <p>Tailored solutions.</p>
+        <p>We develop tailored software   </p> <p> designed around your business needs..</p>
+        <img src={webDevImg4} alt="Web Development" />
       </div>
 
       <div className="service-card">
         <h3>Maintenance & Support</h3>
-        <p>Ongoing updates.</p>
+        <p>We provide continuous monitoring, updates,   </p> <p>and technical support.</p>
+        <img src={webDevImg5} alt="Web Development" />
       </div>
 
       {/* DUPLICATE for infinite scroll */}
       <div className="service-card">
         <h3>Web Development</h3>
         <p>Modern, scalable websites and web apps.</p>
+        <img src={webDevImg6} alt="Web Development" />
       </div>
 
       <div className="service-card">
         <h3>Mobile App Development</h3>
         <p>Android & iOS apps.</p>
+        <img src={webDevImg7} alt="Web Development" />
       </div>
 
     </div>
   </div>
+</section>
+
+
+{/* pizza carousile */}
+<section className="my-12 carousel-section">
+  <PizzaCarousel />
 </section>
 
 
@@ -109,6 +201,36 @@ return (
 </section>
 
 
+
+
+{/* DREAM MACHINE FAQ SECTION */}
+<section className="dream-machine-faq">
+  <div className="faq-container">
+    <h2 className="faq-title">Dream Machine FAQs</h2>
+    
+    <div className="faq-grid">
+      <div className="faq-item">
+        <h3>What is Dream Machine?</h3>
+        <p>Dream Machine is a software by Luma AI that lets users create images and videos using natural language in a single, uninterrupted workflow.</p>
+      </div>
+      
+      <div className="faq-item">
+        <h3>How does Dream Machine work?</h3>
+        <p>Dream Machine allows users to generate images and videos directly from text prompts or images, enabling seamless creative ideation and storytelling.</p>
+      </div>
+      
+      <div className="faq-item">
+        <h3>Can I create videos from images using Dream Machine?</h3>
+        <p>Yes, Dream Machine supports image-to-video creation, allowing users to animate images into videos in one continuous workflow.</p>
+      </div>
+      
+      <div className="faq-item">
+        <h3>Who can use Dream Machine?</h3>
+        <p>Dream Machine is designed for creators, marketers, advertisers, filmmakers, and anyone who wants to bring their ideas to life through AI-powered visual content creation.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 <Footer />

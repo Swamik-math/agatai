@@ -1,15 +1,14 @@
-import { easeOut, motion, useScroll, useTransform } from "framer-motion";
-import { scroll } from "framer-motion";
+import { easeOut, motion, useScroll, useTransform, useVelocity, useMotionValueEvent } from "framer-motion";
+import { useMotionValue } from "framer-motion";
+
 import demo1 from "../assets/demo1.mp4";
 import demo2 from "../assets/demo2.mp4";
 import demo3 from "../assets/demo3.mp4";
 import demo4 from "../assets/demo4.mp4";
 import demo5 from "../assets/demo5.mp4";
 import "./Hero.css";
-import { useState } from "react";
-import { useVelocity } from "framer-motion";
-import { useMotionValueEvent } from "framer-motion";
-import { useSpring } from "framer-motion";
+import { useState, useEffect } from "react";
+// import { useSpring } from "framer-motion";
 const videos = [
   { src: demo1, x: "100%", y: "-150%",ix : "0%" , iy : "0%", delay: 0, scale: 1 },
   { src: demo2, x: "150%", y: "150%",ix : "5%" , iy : "00%", delay: 1, scale: 1 },
@@ -21,9 +20,21 @@ const videos = [
 export default function Hero() {
   const { scrollYProgress } = useScroll();
   const [scrollvalue, setScrollvalue] = useState(5);
-  const {scrollY} = useScroll();
-  const velocity = useVelocity(scrollY)
-  const fadeOut = useTransform(velocity, [0, 0.6], [1, 0]);
+  const duration = useMotionValue(4);
+  const { scrollY } = useScroll();
+  const velocity = useVelocity(scrollY);
+  const fadeOut = useTransform(velocity, [0, 0.5], [1, 0]);
+  const speedMultiplier = 0.4;
+  const moveX = useTransform(scrollY, (value) => value * speedMultiplier);
+
+
+  // Update animation duration based on scroll velocity
+  useMotionValueEvent(velocity, "change", (latest) => {
+    // Higher velocity = shorter duration (faster animation)
+    // Map velocity range to duration range (faster scrolling = faster animation)
+    const newDuration = Math.max(1, 4 - latest * 0.3);
+    duration.set(newDuration);
+  });
   return (
     <section className="hero">
       {/* VIDEO LAYER */}
@@ -43,7 +54,7 @@ export default function Hero() {
               y: 0,
               opacity: 0,
               scale: 0.01,
-              filter : "blur(10px)"
+              filter : "blur(7px)"
             }}
             animate={{
               x: video.x,
@@ -53,7 +64,7 @@ export default function Hero() {
               filter : "blur(0px)"
             }}
             transition={{
-              duration: 4,
+              duration: duration.get(),
               delay: video.delay ,
               ease: [easeOut],
               repeat: Infinity,
@@ -70,6 +81,7 @@ export default function Hero() {
         transition={{ duration: 1, delay: 1 }}
         style={{ opacity: fadeOut }}
       >
+
         <h1>
           We Build Scalable Web &{" "}
           <span>Mobile Solutions for the Future</span>
