@@ -5,38 +5,14 @@ import CircularGallery from '../pages/CircularGallery';
 
 export default function Career() {
     return (
-        
-        <div className="careers-page"
-        style={{
-    backgroundColor: "#dcdbdb",
-  }}
-  >
-            <div className="careers-overlay">
-                {/* all page content */}
-              </div>
-
-        
-       
-               <BlurText
-          text="Build The Future Of Imagination"
-          delay={150}
-          animateBy="letters"
-          direction="top"
-         className="hero-title"
-        />
-
-        
-              <div style={{ height: '600px', position: 'relative' }}>
-              <CircularGallery
-                bend={1}
-                textColor="#ffffff"
-                borderRadius={0.05}
-                scrollSpeed={2}
-                scrollEase={0.05}
-                />
-              </div>
-        
-
+        <div className="careers-page">
+            <BlurText
+                text="Build The Future Of Imagination"
+                delay={150}
+                animateBy="letters"
+                direction="top"
+                className="hero-title"
+            />
             
 
 {/* video section */}
@@ -60,30 +36,29 @@ export default function Career() {
 
             <section className="career-details">
             <div className="career-title-row">
-                <h1>We are building a new kind of mind</h1>
+                <div>
+                    <h1>We are building a new kind of mind</h1>
+                    <p>
+                        We believe real-world physics is the path to general intelligence.
+                        We unite research, product, and go-to-market into one engine.
+                    </p>
+                </div>
                 <button className="career-btn">Join Our Team</button>
             </div>
-                
-                <p>
-                    We believe real-world physics is the path to general intelligence.
-                    We unite research, product, and go-to-market into one engine.
-                </p>
             </section>
 
 {/* description */}
             <section className="career-life">
-  
-
-  <video
-    autoPlay
-    loop
-    muted
-    playsInline
-    className="career-video-player"
-  >
-    <source src="https://videos.pexels.com/video-files/25744121/11904048_2560_1440_25fps.mp4" type="video/mp4" />
-  </video>
-</section>
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="career-life-player"
+              >
+                <source src="https://videos.pexels.com/video-files/25744121/11904048_2560_1440_25fps.mp4" type="video/mp4" />
+              </video>
+            </section>
 
 {/* details of the company */}
 <section className="career-comp">
@@ -116,6 +91,7 @@ export default function Career() {
 
              {/* WHY WORK WITH US */}
       <section className="blog-content">
+        <h2>Why Work with Us</h2>
 
         {/* LEFT BLOG GRID */}
         <div className="blog-grid">
@@ -193,7 +169,7 @@ export default function Career() {
 
       </section>
 
-
+       
                 {/* career card section */}
             <section className="career-jobs">
                 
@@ -250,6 +226,19 @@ export default function Career() {
                 </div>
             </div>
         </section>
+
+
+         {/* circular gallery */}
+      <div style={{ height: '600px', position: 'relative' }}>
+              <CircularGallery
+                bend={1}
+                textColor="#ffffff"
+                borderRadius={0.05}
+                scrollSpeed={2}
+                scrollEase={0.05}
+                />
+              </div>
+
 
         {/* final cta */}
         <section className="career-cta">

@@ -50,13 +50,15 @@
   width: 100%;
   margin: 30px auto;
   padding-top: 5%;
-
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .career-jobs {
     max-width: 900px;
     margin: 0 auto;
-    padding: 40px 20px 80px;
+    padding: 60px 20px;
+    background-color: #fff;
 }
 
 .career-jobs h2 {
@@ -146,29 +148,29 @@
     text-align: left;
     padding: 50px 55px;
     display: flex;
-  flex-direction: column;
-  align-items: flex-start;   /* keeps everything left aligned */
-  gap: 15px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
 }
 
 .career-title-row{
   display: flex;
   width: 100%;
+  gap: 40px;
   align-items: center;
-}
-
-.career-title-row{
-    flex:1;
+  justify-content: space-between;
 }
 
 .career-btn{
-  padding: 60px 20px;
+  padding: 12px 30px;
   background-color: black;
   color: white;
   border: none;
-  margin-left: 40%;
   border-radius: 1000px;
   cursor: pointer;
+  font-weight: 500;
+  margin-left: auto;
+  white-space: nowrap;
 }
 
 .career-btn:hover{
@@ -206,7 +208,81 @@
   border-radius: 0;
 }
 
-/* company details */
+/* Blog / Benefits Section */
+.blog-content {
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.blog-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: #000;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.blog-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  height: 350px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-8px);
+}
+
+.blog-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 30px;
+  color: white;
+}
+
+.blog-category {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.blog-card h3 {
+  margin: 10px 0;
+  font-size: 1.3rem;
+  text-align: left;
+}
+
+.blog-card p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  text-align: left;
+  line-height: 1.5;
+}
 .career-comp{
 padding-top:20px;
 padding-bottom:100px;
@@ -256,16 +332,14 @@ margin-bottom:50px;
 .career-process{
 padding:80px 40px;
 text-align:center;
-
-
-
-    background-image: url("../assets/career-apply.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 8px;
-    height: 500px;
-
+background-image: url("../assets/career-apply.jpg");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+border-radius: 8px;
+min-height: 500px;
+background-color: rgba(255, 255, 255, 0.95);
+background-blend-mode: lighten;
 }
 
 .career-process h2{
@@ -302,11 +376,13 @@ margin-bottom:10px;
 .career-cta{
 text-align:center;
 padding:100px 20px;
+background-color: #ffffff;
 }
 
 .career-cta h2{
 font-size:36px;
 margin-bottom:20px;
+color: #000;
 }
 
 .career-cta p{
@@ -314,6 +390,7 @@ max-width:600px;
 margin:auto;
 color:#555;
 margin-bottom:30px;
+font-size: 1.1rem;
 }
 
 .career-cta button{
@@ -324,15 +401,14 @@ background:black;
 color:white;
 border-radius:8px;
 cursor:pointer;
-transition:0.3s;
-/* 
-width:fit-content;     
-    display:inline-block; */
+transition:0.3s ease;
+font-weight: 500;
 }
 
 .career-cta button:hover{
 background:#414141;
-font-weight: 600;
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 
@@ -347,4 +423,30 @@ font-weight: 600;
 
 .circular-gallery:active {
   cursor: grabbing;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .career-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .career-btn {
+    margin-left: 0;
+    align-self: flex-start;
+  }
+
+  .hero-title {
+    font-size: 48px;
+  }
+
+  .process-grid,
+  .process-comp {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .career-details h1 {
+    font-size: 2.5rem;
+  }
 }

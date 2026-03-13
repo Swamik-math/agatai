@@ -64,8 +64,8 @@ return (
 
 {/* NEW HEADLINE SECTION */}
 <section className="headline-section">
-    <h2>AIGETAI</h2>
-    <p> a technology-driven software company delivering high-quality web, mobile, and AI-powered solutions using modern tech stacks.</p>
+    <h2>Welcome to AIGETAI</h2>
+    <p>A technology-driven software company delivering high-quality web, mobile, and AI-powered solutions using cutting-edge tech stacks.</p>
 </section>
 
 
@@ -116,7 +116,6 @@ return (
     paused={false}
   />
 </section>
-
 
 <hr className="section-divider" />
 
