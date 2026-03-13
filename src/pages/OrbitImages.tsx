@@ -1,4 +1,4 @@
-
+// global css: defined
 
 import { useMemo, useEffect, useRef, useState, ReactNode } from 'react';
 import { motion, useMotionValue, useTransform, animate, MotionValue } from 'motion/react';
@@ -166,7 +166,7 @@ export default function OrbitImages({
   height = 100,
   className = '',
   showPath = false,
-  pathColor = 'rgba(0,0,0,0.1)',
+  pathColor = 'rgba(155, 155, 155, 0.1)',
   pathWidth = 2,
   easing = 'linear',
   paused = false,

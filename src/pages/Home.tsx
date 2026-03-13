@@ -85,6 +85,20 @@ return (
                 />
               </div>
 
+{/* css in career.css ----- describe page */}
+               <section className="career-details">
+            <div className="career-title-row">
+                <div>
+                    <h1>Design, Code and Growth in One Team</h1>
+                    <p>
+                      We work as your embedded product partner, from roadmap and
+                      UI to backend systems, QA, release, and post-launch growth.
+                    </p>
+                </div>
+                <button className="career-btn">Join Our Team</button>
+            </div>
+            </section>
+
 
 <section className="my-24 carousel-section">
   <Service />
@@ -94,7 +108,7 @@ return (
 
 {/* new headline section */}
 <section className="headline-section">
-    <h2>From Idea to Launch, We Build with Clarity and Speed</h2>
+    <h2>Built for Speed. Engineered for Stability.</h2>
     <p>
       We combine strategy, design, engineering, and support to deliver secure,
       scalable products with measurable business impact.
