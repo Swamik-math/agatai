@@ -1,49 +1,57 @@
-import { easeOut, motion, useScroll, useTransform, useVelocity, useMotionValueEvent } from "framer-motion";
-import { useMotionValue } from "framer-motion";
+import {
+  easeOut,
+  motion,
+  useScroll,
+  useTransform,
+  useVelocity,
+  useMotionValueEvent,
+  useSpring,
+} from "framer-motion";
 
 import demo1 from "../assets/demo1.mp4";
 import demo2 from "../assets/demo2.mp4";
 import demo3 from "../assets/demo3.mp4";
 import demo4 from "../assets/demo4.mp4";
 import demo5 from "../assets/demo5.mp4";
+import demo6 from "../assets/demo6.mp4";
 import "./Hero.css";
-import { useState, useEffect } from "react";
-// import { useSpring } from "framer-motion";
+import { useState, useRef } from "react";
+
 const videos = [
-  { src: demo1, x: "100%", y: "-150%",ix : "0%" , iy : "0%", delay: 0, scale: 1 },
-  { src: demo2, x: "150%", y: "150%",ix : "5%" , iy : "00%", delay: 1, scale: 1 },
-  { src: demo3, x: "-160%", y: "-160%",ix : "7%" , iy : "4%", delay: 1.5, scale: 1 },
-  { src: demo4, x: "-110%", y: "105%",ix : "9%" , iy : "6%", delay: 1.8, scale: 1 },
-  { src: demo5, x: "-90%", y: "-80%",ix : "5%" , iy : "0%", delay: 2, scale: 1},
+  { src: demo1, x: "200%", y: "-200%", delay: 0, scale: 1 },
+  { src: demo2, x: "200%", y: "200%", delay: 1, scale: 1 },
+  { src: demo3, x: "-250%", y: "-250%", delay: 2, scale: 1 },
+  { src: demo4, x: "-250%", y: "250%", delay: 3, scale: 1 },
+  { src: demo5, x: "-130%", y: "180%", delay: 4, scale: 1 },
+  { src: demo6, x: "250%", y: "-100%", delay: 5, scale: 1 },
 ];
 
 export default function Hero() {
-  const { scrollYProgress } = useScroll();
-  const [scrollvalue, setScrollvalue] = useState(5);
-  const duration = useMotionValue(4);
   const { scrollY } = useScroll();
   const velocity = useVelocity(scrollY);
-  const fadeOut = useTransform(velocity, [0, 0.5], [1, 0]);
-  const speedMultiplier = 0.4;
-  const moveX = useTransform(scrollY, (value) => value * speedMultiplier);
+  const [animationSpeed, setAnimationSpeed] = useState(1);
 
-
-  // Update animation duration based on scroll velocity
-  useMotionValueEvent(velocity, "change", (latest) => {
-    // Higher velocity = shorter duration (faster animation)
-    // Map velocity range to duration range (faster scrolling = faster animation)
-    const newDuration = Math.max(1, 4 - latest * 0.3);
-    duration.set(newDuration);
+  // Smooth spring animation for speed changes
+  const smoothSpeed = useSpring(animationSpeed, {
+    stiffness: 100,
+    damping: 30,
   });
+
+  // Update animation speed based on scroll velocity
+  useMotionValueEvent(velocity, "change", (latest) => {
+    // Map velocity to speed multiplier (0.5x to 2x speed)
+    const speed = Math.min(Math.max(1 + latest * 0.05, 0.5), 2);
+    setAnimationSpeed(speed);
+  });
+
   return (
     <section className="hero">
       {/* VIDEO LAYER */}
-      <motion.div className="hero-videos" style={{ opacity: fadeOut}}  >
+      <div className="hero-videos">
         {videos.map((video, index) => (
           <motion.video
             key={index}
             className="hero-video"
-          
             src={video.src}
             autoPlay
             muted
@@ -54,24 +62,25 @@ export default function Hero() {
               y: 0,
               opacity: 0,
               scale: 0.01,
-              filter : "blur(7px)"
+              filter: "blur(7px)",
             }}
             animate={{
               x: video.x,
               y: video.y,
-              opacity: 0.8,
+              opacity: 1,
               scale: video.scale,
-              filter : "blur(0px)"
+              filter: "blur(0px)",
             }}
             transition={{
-              duration: duration.get(),
-              delay: video.delay ,
-              ease: [easeOut],
+              duration: 10 / animationSpeed,
+              delay: video.delay,
+              ease: easeOut,
               repeat: Infinity,
+              repeatType: "loop",
             }}
           />
         ))}
-      </motion.div>
+      </div>
 
       {/* CONTENT */}
       <motion.div
@@ -79,12 +88,9 @@ export default function Hero() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 1 }}
-        style={{ opacity: fadeOut }}
       >
-
         <h1>
-          We Build Scalable Web &{" "}
-          <span>Mobile Solutions for the Future</span>
+          We Build Scalable Web & <span>Mobile Solutions for the Future</span>
         </h1>
 
         <p>Websites • Android • iOS • AI-Powered Software</p>
