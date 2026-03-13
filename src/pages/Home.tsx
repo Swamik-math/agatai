@@ -1,4 +1,4 @@
-import {useRef, useEffect } from "react";
+import { useRef } from "react";
 
 import Hero from '../components/Hero'
 
@@ -64,8 +64,11 @@ return (
 
 {/* NEW HEADLINE SECTION */}
 <section className="headline-section">
-    <h2>Welcome to AIGETAI</h2>
-    <p>A technology-driven software company delivering high-quality web, mobile, and AI-powered solutions using cutting-edge tech stacks.</p>
+    <h2>Building Digital Products That Move Businesses Forward</h2>
+    <p>
+      AIGETAI is a product engineering company focused on web, mobile, AI, and
+      custom software solutions for startups and growing enterprises.
+    </p>
 </section>
 
 
@@ -91,8 +94,11 @@ return (
 
 {/* new headline section */}
 <section className="headline-section">
-    <h2>Your creative partner for ideation & imagination</h2>
-    <p> We design and develop web apps, mobile applications, AI-powered systems, and custom software—delivering scalable, secure, and reliable solutions with ongoing support.</p>
+    <h2>From Idea to Launch, We Build with Clarity and Speed</h2>
+    <p>
+      We combine strategy, design, engineering, and support to deliver secure,
+      scalable products with measurable business impact.
+    </p>
 </section>
 
 
@@ -126,44 +132,44 @@ return (
       
       <div className="service-card">
         <h3>Web Development</h3>
-        <p>We build fast, secure, and scalable</p><p> websites using modern technologies.</p>
+        <p>Performance-focused websites and platforms</p><p>built for conversion, scale, and reliability.</p>
         <img src={webDevImg1} alt="Web Development" />
       </div>
 
       <div className="service-card">
         <h3>Mobile App Development</h3>
-        <p>We design and develop high-quality</p> <p> Android and iOS applications.</p>
+        <p>Native and cross-platform mobile apps</p> <p>with polished UX and stable architecture.</p>
         <img src={webDevImg2} alt="Web Development" />
       </div>
 
       <div className="service-card">
         <h3>AI & Automation</h3>
-        <p>We create AI-powered systems to automate </p> <p>workflows and enhance decision-making.</p>
+        <p>AI features and workflow automation</p> <p>that improve decisions and reduce manual work.</p>
         <img src={webDevImg3} alt="Web Development" />
       </div>
 
       <div className="service-card">
         <h3>Custom Software</h3>
-        <p>We develop tailored software   </p> <p> designed around your business needs..</p>
+        <p>Tailored business software designed</p> <p>for your operations, users, and growth goals.</p>
         <img src={webDevImg4} alt="Web Development" />
       </div>
 
       <div className="service-card">
         <h3>Maintenance & Support</h3>
-        <p>We provide continuous monitoring, updates,   </p> <p>and technical support.</p>
+        <p>Continuous monitoring, proactive updates,</p> <p>and long-term technical partnership.</p>
         <img src={webDevImg5} alt="Web Development" />
       </div>
 
       {/* DUPLICATE for infinite scroll */}
       <div className="service-card">
-        <h3>Web Development</h3>
-        <p>Modern, scalable websites and web apps.</p>
+        <h3>Cloud & DevOps</h3>
+        <p>Cloud-ready deployment pipelines and</p><p>infrastructure practices for faster delivery.</p>
         <img src={webDevImg6} alt="Web Development" />
       </div>
 
       <div className="service-card">
-        <h3>Mobile App Development</h3>
-        <p>Android & iOS apps.</p>
+        <h3>Product Consulting</h3>
+        <p>Roadmaps, architecture planning, and</p><p>technical guidance for product teams.</p>
         <img src={webDevImg7} alt="Web Development" />
       </div>
 
@@ -190,10 +196,11 @@ return (
   />
   <div className="video-overlay">
     <div className="video-content">
-      <h2>Your creative partner for ideation & imagination</h2>
+      <h2>Your Technology Partner for Sustainable Growth</h2>
       <p>
-        We design and develop web apps, mobile applications, AI-powered systems, 
-        and custom software—delivering scalable, secure, and reliable solutions with ongoing support.
+        At AIGETAI, we help organizations modernize systems, launch digital
+        products, and scale engineering with a strong focus on quality,
+        security, and business outcomes.
       </p>
     </div>
   </div>
@@ -202,30 +209,45 @@ return (
 
 
 
-{/* DREAM MACHINE FAQ SECTION */}
+{/* COMPANY FAQ SECTION */}
 <section className="dream-machine-faq">
   <div className="faq-container">
-    <h2 className="faq-title">Dream Machine FAQs</h2>
+    <h2 className="faq-title">AIGETAI Company FAQs</h2>
     
     <div className="faq-grid">
       <div className="faq-item">
-        <h3>What is Dream Machine?</h3>
-        <p>Dream Machine is a software by Luma AI that lets users create images and videos using natural language in a single, uninterrupted workflow.</p>
+        <h3>What does AIGETAI do?</h3>
+        <p>
+          AIGETAI designs and develops web platforms, mobile apps, AI-driven
+          solutions, and custom enterprise software for businesses across
+          multiple industries.
+        </p>
       </div>
       
       <div className="faq-item">
-        <h3>How does Dream Machine work?</h3>
-        <p>Dream Machine allows users to generate images and videos directly from text prompts or images, enabling seamless creative ideation and storytelling.</p>
+        <h3>What industries do you work with?</h3>
+        <p>
+          We support startups, education, healthcare, retail, finance, and
+          service businesses that need reliable digital products and technology
+          modernization.
+        </p>
       </div>
       
       <div className="faq-item">
-        <h3>Can I create videos from images using Dream Machine?</h3>
-        <p>Yes, Dream Machine supports image-to-video creation, allowing users to animate images into videos in one continuous workflow.</p>
+        <h3>How do projects usually start?</h3>
+        <p>
+          Projects typically begin with a discovery call, followed by scope
+          planning, timeline definition, and a phased delivery roadmap aligned
+          to your priorities.
+        </p>
       </div>
       
       <div className="faq-item">
-        <h3>Who can use Dream Machine?</h3>
-        <p>Dream Machine is designed for creators, marketers, advertisers, filmmakers, and anyone who wants to bring their ideas to life through AI-powered visual content creation.</p>
+        <h3>Do you provide post-launch support?</h3>
+        <p>
+          Yes. We offer maintenance, monitoring, optimization, and feature
+          enhancement support to ensure long-term product stability and growth.
+        </p>
       </div>
     </div>
   </div>
