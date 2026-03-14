@@ -90,14 +90,19 @@ export default function Hero() {
         transition={{ duration: 1, delay: 1 }}
       >
         <h1>
-          We Build Scalable Web & <span>Mobile Solutions for the Future</span>
+          We Build Intelligent Software That{" "}
+          <span>Scales With Your Vision</span>
         </h1>
 
-        <p>Websites • Android • iOS • AI-Powered Software</p>
+        <p>
+          Transform ideas into production-ready solutions. Web apps, mobile
+          platforms, and AI systems built with cutting-edge technology and
+          designed to grow with your business
+        </p>
 
         <div className="hero-actions">
-          <button className="primary">Get a Free Quote</button>
-          <button className="secondary">View Our Work</button>
+          <button className="primary">Start Your Project</button>
+          <button className="secondary">Explore Our Work</button>
         </div>
       </motion.div>
     </section>
