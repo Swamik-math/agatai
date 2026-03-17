@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import {useState} from "react";
 import "./Navbar.css";
+import companyLogo from '../assets/company-logo.svg';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +11,8 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-         AIGETAI 
+          <img src={companyLogo} alt="AIGETAI logo" className="navbar-logo-image" />
+          <span className="navbar-logo-text">AIGETAI</span>
         </Link>
 
          {/* Hamburger */}
