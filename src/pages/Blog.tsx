@@ -455,9 +455,23 @@ export default function Blog() {
 
       
 				<section className="subscribe-section" aria-label="News intro">
-					<p className="-kicker">Latest AI + Tech News</p>
-					<h1>Daily updates on AI breakthroughs, product launches, and engineering shifts</h1>
+					<h1>Subscribe to Press Updates</h1>
+					<p className="subscribe-kicker">Want to receive our latest releases directly in your inbox?</p>
 				</section>
+
+        <section className="input-detail">
+          <div className="input-row">
+            <input type="text" placeholder="First Name" required />
+            <input type="email" placeholder="Last name" required />
+          </div>
+
+          <div className="input-row">
+            <input type="text" placeholder="Email" />
+            <input type="text" placeholder="Phone Number" />
+          </div>
+
+          <button>Subscribe</button>
+        </section>
 
 
 		</main>

@@ -1,81 +1,364 @@
+import { useState } from "react";
 import "./OnlineClasses.css";
-import heroImg from '../assets/online-class/online-hero.jpg';
 import reactImg from '../assets/online-class/React-JSi.jpg';
 import uiuxImg from '../assets/online-class/UI-UX-Design.jpg';
 import AIImg from '../assets/online-class/Artificial intelligence (AI).jpg';
+import heroImg from '../assets/online-class/online-hero.jpg';
 
+const CATEGORIES = ["All", "Web Development", "AI & Machine Learning", "UI/UX Design", "Data Science", "Cloud"];
+
+interface Course {
+  id: number;
+  img: string;
+  title: string;
+  instructor: string;
+  rating: number;
+  reviews: number;
+  bestseller: boolean;
+  category: string;
+  hours: number;
+  level: string;
+  lectures: number;
+}
+
+const COURSES: Course[] = [
+  {
+    id: 1,
+    img: reactImg,
+    title: "React & TypeScript – The Complete Developer Guide",
+    instructor: "Sarah Johnson",
+    rating: 4.8,
+    reviews: 12403,
+    bestseller: true,
+    category: "Web Development",
+    hours: 42,
+    level: "All Levels",
+    lectures: 310,
+  },
+  {
+    id: 2,
+    img: AIImg,
+    title: "Artificial Intelligence A–Z: Build AI Models from Scratch",
+    instructor: "Marcus Chen",
+    rating: 4.7,
+    reviews: 8930,
+    bestseller: true,
+    category: "AI & Machine Learning",
+    hours: 36,
+    level: "Beginner",
+    lectures: 240,
+  },
+  {
+    id: 3,
+    img: uiuxImg,
+    title: "UI/UX Design Bootcamp: Figma, Prototyping & Research",
+    instructor: "Priya Sharma",
+    rating: 4.9,
+    reviews: 6210,
+    bestseller: false,
+    category: "UI/UX Design",
+    hours: 28,
+    level: "Beginner",
+    lectures: 185,
+  },
+  {
+    id: 4,
+    img: reactImg,
+    title: "Next.js 14 – Full Stack Web Apps with AI Integration",
+    instructor: "David Park",
+    rating: 4.6,
+    reviews: 4100,
+    bestseller: false,
+    category: "Web Development",
+    hours: 31,
+    level: "Intermediate",
+    lectures: 210,
+  },
+  {
+    id: 5,
+    img: AIImg,
+    title: "Machine Learning & Deep Learning with Python",
+    instructor: "Elena Rossi",
+    rating: 4.8,
+    reviews: 9820,
+    bestseller: true,
+    category: "AI & Machine Learning",
+    hours: 44,
+    level: "All Levels",
+    lectures: 290,
+  },
+  {
+    id: 6,
+    img: uiuxImg,
+    title: "Advanced Figma: Design Systems, Auto Layout & Components",
+    instructor: "Amit Patel",
+    rating: 4.7,
+    reviews: 3310,
+    bestseller: false,
+    category: "UI/UX Design",
+    hours: 18,
+    level: "Advanced",
+    lectures: 120,
+  },
+  {
+    id: 7,
+    img: reactImg,
+    title: "Node.js & Express: Backend Development Masterclass",
+    instructor: "James Carter",
+    rating: 4.7,
+    reviews: 7650,
+    bestseller: true,
+    category: "Web Development",
+    hours: 38,
+    level: "Intermediate",
+    lectures: 250,
+  },
+  {
+    id: 8,
+    img: AIImg,
+    title: "Data Science & Analytics: From Zero to Expert",
+    instructor: "Li Wei",
+    rating: 4.6,
+    reviews: 5540,
+    bestseller: false,
+    category: "Data Science",
+    hours: 50,
+    level: "All Levels",
+    lectures: 340,
+  },
+];
+
+const STATS = [
+  { value: "500+", label: "Courses Available" },
+  { value: "100+", label: "Enrolled Students" },
+  { value: "90+", label: "Expert Instructors" },
+  { value: "80%", label: "Satisfaction Rate" },
+];
+
+function StarRating({ rating }: { rating: number }) {
+  return (
+    <span className="oc-stars">
+      {[1, 2, 3, 4, 5].map((i) => {
+        const filled = i <= Math.floor(rating);
+        const partial = !filled && i === Math.ceil(rating);
+        return (
+          <span key={i} className={`oc-star ${filled ? "filled" : partial ? "partial" : "empty"}`}>
+            ★
+          </span>
+        );
+      })}
+    </span>
+  );
+}
 
 export default function OnlineClasses() {
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchInput, setSearchInput] = useState("");
+
+  const filtered = COURSES.filter((c) => {
+    const matchCat = activeCategory === "All" || c.category === activeCategory;
+    const matchSearch =
+      searchQuery === "" ||
+      c.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      c.instructor.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchCat && matchSearch;
+  });
+
+  function handleSearch(e: React.FormEvent) {
+    e.preventDefault();
+    setSearchQuery(searchInput);
+  }
+
   return (
-    <div className="classes-page">
+    <div className="oc-page">
 
-      {/* HERO */}
-      <section className="classes-hero">
-        <h1>Learn Future-Ready Skills</h1>
-        <p>
-          Join our expert-led online classes and gain practical experience in
-          AI, Web Development, and Modern Technologies.
-        </p>
-        <button>Browse Courses</button>
-      </section>
-
-      {/* COURSE GRID */}
-      <section className="classes-courses">
-        <h2>Popular Courses</h2>
-
-        <div className="course-grid">
-
-          <div className="course-card">
-            <img src={reactImg} alt="React Course"/>
-            <h3>React Development</h3>
-            <p>Build modern web apps using React and TypeScript.</p>
-            <button>View Course</button>
-          </div>
-
-          <div className="course-card">
-            <img src={AIImg} alt="AI Course"/>
-            <h3>Artificial Intelligence</h3>
-            <p>Learn machine learning and AI fundamentals.</p>
-            <button>View Course</button>
-          </div>
-
-          <div className="course-card">
-            <img src={uiuxImg} alt="UIUX"/>
-            <h3>UI/UX Design</h3>
-            <p>Design user-friendly and modern interfaces.</p>
-            <button>View Course</button>
-          </div>
-
+      {/* ── HERO ─────────────────────────────────────────── */}
+      <section className="oc-hero" style={{ backgroundImage: `url(${heroImg})` }}>
+        <div className="oc-hero-overlay" />
+        <div className="oc-hero-content">
+          <p className="oc-hero-kicker">Expand your skills. Advance your career.</p>
+          <h1 className="oc-hero-heading">Learn Without Limits</h1>
+          <p className="oc-hero-sub">
+            Join 500+ students mastering AI, Web Development, and Design
+            with expert-led courses built for the real world.
+          </p>
+          <form className="oc-search-bar" onSubmit={handleSearch}>
+            <svg className="oc-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input
+              type="text"
+              placeholder="Search for any course…"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
+            <button type="submit">Search</button>
+          </form>
+          <p className="oc-hero-popular">
+            <strong>Popular:</strong> React, Next.js, Python, Figma, Machine Learning
+          </p>
         </div>
       </section>
 
-      {/* BENEFITS */}
-      <section className="classes-benefits">
-        <h2>Why Learn With Us</h2>
-
-        <div className="benefit-grid">
-          <div className="benefit">
-            <h3>Expert Mentors</h3>
-            <p>Learn from industry professionals.</p>
+      {/* ── STATS STRIP ──────────────────────────────────── */}
+      <section className="oc-stats">
+        {STATS.map((s) => (
+          <div className="oc-stat" key={s.label}>
+            <span className="oc-stat-value">{s.value}</span>
+            <span className="oc-stat-label">{s.label}</span>
           </div>
+        ))}
+      </section>
 
-          <div className="benefit">
-            <h3>Hands-on Projects</h3>
-            <p>Work on real-world projects.</p>
+      {/* ── COURSES ──────────────────────────────────────── */}
+      <section className="oc-courses">
+        <div className="oc-courses-header">
+          <h2>
+            {activeCategory === "All" ? "All Courses" : activeCategory}
+            <span className="oc-courses-count">{filtered.length} courses</span>
+          </h2>
+        </div>
+
+        {/* Category tabs */}
+        <div className="oc-tabs" role="tablist">
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              role="tab"
+              aria-selected={activeCategory === cat}
+              className={`oc-tab ${activeCategory === cat ? "active" : ""}`}
+              onClick={() => { setActiveCategory(cat); setSearchQuery(""); setSearchInput(""); }}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Course grid */}
+        {filtered.length === 0 ? (
+          <p className="oc-no-results">No courses found. Try a different search or category.</p>
+        ) : (
+          <div className="oc-grid">
+            {filtered.map((course) => (
+              <div className="oc-card" key={course.id}>
+                <div className="oc-card-thumb">
+                  <img src={course.img} alt={course.title} loading="lazy" />
+                  {course.bestseller && (
+                    <span className="oc-badge-bestseller">Bestseller</span>
+                  )}
+                </div>
+                <div className="oc-card-body">
+                  <h3 className="oc-card-title">{course.title}</h3>
+                  <p className="oc-card-instructor">{course.instructor}</p>
+                  <div className="oc-card-rating">
+                    <span className="oc-rating-number">{course.rating.toFixed(1)}</span>
+                    <StarRating rating={course.rating} />
+                    <span className="oc-rating-reviews">({course.reviews.toLocaleString()})</span>
+                  </div>
+                  <p className="oc-card-meta">
+                    {course.hours}h · {course.lectures} lectures · {course.level}
+                  </p>
+                </div>
+                <div className="oc-card-footer">
+                  <button className="oc-btn-enroll">Enroll Now</button>
+                  <button className="oc-btn-preview">Preview</button>
+                </div>
+              </div>
+            ))}
           </div>
+        )}
+      </section>
 
-          <div className="benefit">
-            <h3>Flexible Learning</h3>
-            <p>Study anytime from anywhere.</p>
+      {/* ── WHY LEARN WITH US ────────────────────────────── */}
+      <section className="oc-features">
+        <div className="oc-features-inner">
+          <p className="oc-features-kicker">Why choose AIGETAI</p>
+          <h2 className="oc-features-heading">Everything you need to succeed</h2>
+          <div className="oc-features-grid">
+            {[
+              {
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                ),
+                title: "Expert Instructors",
+                desc: "Learn directly from industry professionals with years of real-world experience.",
+              },
+              {
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                  </svg>
+                ),
+                title: "Hands-on Projects",
+                desc: "Every course includes practical assignments and projects to build your portfolio.",
+              },
+              {
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                ),
+                title: "Learn at Your Pace",
+                desc: "Lifetime access to all course materials. Study anytime, from anywhere.",
+              },
+              {
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+                ),
+                title: "Certificate of Completion",
+                desc: "Earn verified certificates to share on LinkedIn and showcase to employers.",
+              },
+              {
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  </svg>
+                ),
+                title: "Community Support",
+                desc: "Join a vibrant community of learners and get help from peers and mentors.",
+              },
+              {
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>
+                ),
+                title: "Multi-Device Access",
+                desc: "Switch seamlessly between desktop, tablet, and mobile without losing progress.",
+              },
+            ].map((f) => (
+              <div className="oc-feature-card" key={f.title}>
+                <div className="oc-feature-icon">{f.icon}</div>
+                <h3>{f.title}</h3>
+                <p>{f.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="classes-cta">
-        <h2>Start Learning Today</h2>
-        <p>Upgrade your skills and build your career with us.</p>
-        <button>Join Now</button>
+      {/* ── CTA BANNER ───────────────────────────────────── */}
+      <section className="oc-cta">
+        <div className="oc-cta-inner">
+          <h2>Ready to start your learning journey?</h2>
+          <p>Join thousands of students already building in-demand skills with AIGETAI.</p>
+          <div className="oc-cta-actions">
+            <button className="oc-cta-primary">Get Started Free</button>
+            <button className="oc-cta-secondary">Browse All Courses</button>
+          </div>
+        </div>
       </section>
 
     </div>
