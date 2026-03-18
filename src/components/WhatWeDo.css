@@ -1,0 +1,41 @@
+.services {
+  /* padding: 40px 0; */
+  overflow: hidden;
+}
+
+.services-scroll {
+  overflow-x: scroll;
+  cursor: grab;
+  scrollbar-width: none;
+}
+
+.services-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.services-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+}
+
+.service-card {
+  min-width: 300px;
+  /* height: 380px; */
+  padding: 20px;
+  border-radius: 20px;
+  background: #111;
+  color: #fff;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: scale(1.05);
+}
+
+.service-card img {
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 12px;
+}
