@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Blog from "./pages/Blog";
 import SoftwareEnquiry from "./pages/SoftwareEnquiry";
 import OnlineClasses from "./pages/OnlineClasses";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/classes" element={<OnlineClasses />} />
 
         </Routes>
+        <Footer/>
     </div>
     
   

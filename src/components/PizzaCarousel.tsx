@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { pizzas } from "../data/pizzas";
+import { ServiceAnime } from "../data/ServiceAnime";
 // import CircularText from "./CircularText";
 import DecoImages from "./DecoImages";
 
@@ -11,14 +11,14 @@ const PizzaCarousel = () => {
 
   const goToNext = useCallback(() => {
     setDirection(1);
-    setCurrentIndex((prev) => (prev + 1) % pizzas.length);
+    setCurrentIndex((prev) => (prev + 1) % ServiceAnime.length);
   }, []);
-
-  
 
   const goToPrev = useCallback(() => {
     setDirection(-1);
-    setCurrentIndex((prev) => (prev - 1 + pizzas.length) % pizzas.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + ServiceAnime.length) % ServiceAnime.length,
+    );
   }, []);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const PizzaCarousel = () => {
     return () => clearInterval(interval);
   }, [goToNext]);
 
-  const currentPizza = pizzas[currentIndex];
+  const currentPizza = ServiceAnime[currentIndex];
 
   const imageVariants = {
     enter: (direction: number) => ({
