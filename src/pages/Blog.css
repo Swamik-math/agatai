@@ -440,7 +440,7 @@ box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.12);
 
 @media (max-width: 780px) {
   .blog-page {
-    padding-top: 1rem;
+    padding-top: calc(70px + 1rem);
   }
 
   .blog-modal {
