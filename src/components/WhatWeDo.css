@@ -1,41 +1,60 @@
-.services {
-  /* padding: 40px 0; */
-  overflow: hidden;
+.minimal-section {
+  padding: 80px 40px;
+  background: #f7f7f7;
+  perspective: 1200px;
 }
 
-.services-scroll {
-  overflow-x: scroll;
-  cursor: grab;
-  scrollbar-width: none;
+.minimal-container {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
 }
 
-.services-scroll::-webkit-scrollbar {
+.minimal-container::-webkit-scrollbar {
   display: none;
 }
 
-.services-track {
-  display: flex;
-  gap: 20px;
-  width: max-content;
-}
-
-.service-card {
-  min-width: 300px;
-  /* height: 380px; */
-  padding: 20px;
+.minimal-card {
+  min-width: 380px;
+  height: 260px;
+  background: #ffffff;
   border-radius: 20px;
-  background: #111;
-  color: #fff;
+  padding: 32px;
   flex-shrink: 0;
-  transition: transform 0.3s ease;
+  scroll-snap-align: start;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+
+  will-change: transform;
 }
 
-.service-card:hover {
-  transform: scale(1.05);
+.minimal-card:hover {
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
 }
 
-.service-card img {
-  width: 100%;
-  margin-top: 20px;
-  border-radius: 12px;
+.minimal-card h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #111;
+}
+
+.minimal-card p {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.6;
+  max-width: 90%;
+}
+
+.minimal-card span {
+  font-size: 14px;
+  color: #999;
+  letter-spacing: 0.5px;
 }
