@@ -4,8 +4,8 @@ import Hero from "../components/Hero";
 
 import Footer from "../components/Footer";
 import videoBg from "../assets/videoplayback.mp4";
-import PizzaCarousel from "../components/PizzaCarousel";
 import CircularGallery from "../pages/CircularGallery";
+import Masonry from "./Masonry";
 import OrbitImages from "./OrbitImages";
 
 import Service from "../components/Service";
@@ -51,6 +51,69 @@ export default function Home() {
     "https://picsum.photos/300/300?grayscale&random=4",
     "https://picsum.photos/300/300?grayscale&random=5",
     "https://picsum.photos/300/300?grayscale&random=6",
+  ];
+
+  const masonryItems = [
+    {
+      id: "m1",
+      img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
+      url: "https://example.com/m1",
+      height: 520,
+    },
+    {
+      id: "m2",
+      img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80",
+      url: "https://example.com/m2",
+      height: 360,
+    },
+    {
+      id: "m3",
+      img: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=80",
+      url: "https://example.com/m3",
+      height: 470,
+    },
+    {
+      id: "m4",
+      img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=80",
+      url: "https://example.com/m4",
+      height: 320,
+    },
+    {
+      id: "m5",
+      img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80",
+      url: "https://example.com/m5",
+      height: 430,
+    },
+    {
+      id: "m6",
+      img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80",
+      url: "https://example.com/m6",
+      height: 520,
+    },
+    {
+      id: "m7",
+      img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
+      url: "https://example.com/m7",
+      height: 380,
+    },
+    {
+      id: "m8",
+      img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80",
+      url: "https://example.com/m8",
+      height: 460,
+    },
+    {
+      id: "m9",
+      img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
+      url: "https://example.com/m9",
+      height: 340,
+    },
+    {
+      id: "m10",
+      img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80",
+      url: "https://example.com/m10",
+      height: 500,
+    },
   ];
 
   return (
@@ -121,10 +184,26 @@ export default function Home() {
 
       <WhatWeDo />
 
-      {/* pizza carousile
-      <section className="my-12 carousel-section">
-        <PizzaCarousel />
-      </section> */}
+      <section
+        style={{
+          height: "82vh",
+          minHeight: "620px",
+          position: "relative",
+          margin: "2rem 0 2.5rem",
+        }}
+      >
+        <Masonry
+          items={masonryItems}
+          ease="power3.out"
+          duration={0.6}
+          stagger={0.05}
+          animateFrom="bottom"
+          scaleOnHover
+          hoverScale={0.95}
+          blurToFocus
+          colorShiftOnHover={false}
+        />
+      </section>
 
       {/* Video Background Section */}
       <section className="video-section">

@@ -4,6 +4,171 @@
     min-height: 100vh;
 }
 
+.career-pay-hero {
+  position: relative;
+  max-width: 1120px;
+  margin: 0.8rem auto 0;
+  min-height: 560px;
+  border-radius: 28px;
+  border: 1px solid #dddddd;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(255, 209, 138, 0.45), transparent 32%),
+    radial-gradient(circle at 86% 16%, rgba(177, 221, 255, 0.42), transparent 30%),
+    linear-gradient(180deg, #f4f4f4 0%, #ececec 100%);
+  overflow: hidden;
+  text-align: center;
+  padding: clamp(2.2rem, 4vw, 3.8rem) 1.2rem 2.6rem;
+  box-shadow: 0 20px 50px rgba(12, 16, 25, 0.12);
+}
+
+.career-pay-kicker {
+  margin: 0;
+  font-size: 0.76rem;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: #5f6775;
+  font-weight: 700;
+}
+
+.career-pay-hero h1 {
+  margin: 1rem auto 0;
+  max-width: 900px;
+  font-size: clamp(2rem, 7.5vw, 5.8rem);
+  letter-spacing: -0.045em;
+  line-height: 0.94;
+  color: #15181f;
+}
+
+.career-pay-hero h1 span {
+  display: block;
+  margin-top: 0.65rem;
+  color: #ff6a00;
+  text-shadow: 0 6px 18px rgba(255, 106, 0, 0.25);
+}
+
+.career-pay-subtext {
+  max-width: 620px;
+  margin: 1.3rem auto 0;
+  color: #626a78;
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.career-pay-main-card {
+  width: min(520px, 90%);
+  margin: 0 auto 1.2rem;
+  padding: 0.85rem;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid #d6d8dc;
+  box-shadow: 0 12px 24px rgba(16, 24, 40, 0.16);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.career-pay-chip {
+  border-radius: 12px;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.chip-dark {
+  background: #111827;
+  color: #ffffff;
+}
+
+.chip-green {
+  background: #1db954;
+  color: #05220f;
+}
+
+.chip-blue {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+.chip-light {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.career-pay-cta {
+  margin-top: 1.6rem;
+  border: none;
+  background: linear-gradient(140deg, #121212 0%, #1d1f26 100%);
+  color: #ffffff;
+  border-radius: 14px;
+  min-width: 250px;
+  padding: 0.9rem 1.4rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(12, 16, 25, 0.32);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.career-pay-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 32px rgba(12, 16, 25, 0.36);
+}
+
+.career-pay-floating {
+  position: absolute;
+  z-index: 1;
+  border-radius: 16px;
+  padding: 0.66rem 0.82rem;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(17, 24, 39, 0.14);
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.16);
+  backdrop-filter: blur(8px);
+  min-width: 140px;
+  animation: careerFloat 6s ease-in-out infinite;
+}
+
+.career-pay-floating span {
+  display: block;
+  font-size: 0.67rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748b;
+}
+
+.career-pay-floating strong {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+  color: #0f172a;
+}
+
+.career-pay-card-a {
+  top: 14%;
+  left: 7%;
+}
+
+.career-pay-card-b {
+  top: 20%;
+  right: 8%;
+  animation-delay: 1.2s;
+}
+
+.career-pay-card-c {
+  bottom: 20%;
+  right: 18%;
+  animation-delay: 2.1s;
+}
+
+@keyframes careerFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 /* backgonund image blur effect */
 .careers-page {
   position: relative;
@@ -438,6 +603,25 @@ box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .career-pay-hero {
+    margin: 0.4rem 0.65rem 0;
+    min-height: auto;
+    border-radius: 20px;
+  }
+
+  .career-pay-main-card {
+    grid-template-columns: 1fr;
+  }
+
+  .career-pay-floating {
+    display: none;
+  }
+
+  .career-pay-cta {
+    width: 100%;
+    max-width: 320px;
+  }
+
   .career-title-row {
     flex-direction: column;
     align-items: flex-start;

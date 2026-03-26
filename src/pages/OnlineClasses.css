@@ -7,6 +7,7 @@
   color: #1c1d1f;
   background: #fff;
   margin-top: 5%;
+  animation: ocPageReveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* ── HERO ─────────────────────────────────────────────── */
@@ -27,6 +28,18 @@
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 30px 80px rgba(30, 36, 47, 0.16);
   overflow: hidden;
+  isolation: isolate;
+}
+
+.oc-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.38) 48%, transparent 100%);
+  transform: translateX(-110%);
+  animation: ocHeroSweep 2.8s 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .oc-hero-glow {
@@ -42,6 +55,7 @@
   background: rgba(255, 255, 255, 0.8);
   top: -140px;
   left: -90px;
+  animation: ocOrbDriftA 9s ease-in-out infinite;
 }
 
 .oc-hero-glow-b {
@@ -50,12 +64,14 @@
   background: rgba(173, 186, 207, 0.52);
   right: -120px;
   bottom: -110px;
+  animation: ocOrbDriftB 10s ease-in-out infinite;
 }
 
 .oc-hero-content {
   position: relative;
   z-index: 2;
   max-width: 640px;
+  animation: ocRiseIn 0.8s 0.12s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .oc-hero-kicker {
@@ -65,6 +81,7 @@
   text-transform: uppercase;
   color: #4b5563;
   margin: 0 0 16px;
+  animation: ocTextIn 0.6s 0.18s ease both;
 }
 
 .oc-hero-heading {
@@ -74,6 +91,7 @@
   color: #101319;
   letter-spacing: -0.04em;
   margin: 0 0 1.1rem;
+  animation: ocTextIn 0.7s 0.24s ease both;
 }
 
 .oc-hero-heading span {
@@ -91,6 +109,7 @@
   line-height: 1.7;
   margin: 0 0 1.65rem;
   max-width: 560px;
+  animation: ocTextIn 0.75s 0.3s ease both;
 }
 
 .oc-hero-actions {
@@ -98,6 +117,7 @@
   align-items: center;
   gap: 0.8rem;
   margin-bottom: 1.3rem;
+  animation: ocTextIn 0.7s 0.36s ease both;
 }
 
 .oc-hero-primary,
@@ -134,6 +154,11 @@
   box-shadow: 0 10px 24px rgba(17, 24, 39, 0.14);
 }
 
+.oc-hero-primary:active,
+.oc-hero-secondary:active {
+  transform: translateY(0) scale(0.98);
+}
+
 /* search bar */
 .oc-search-bar {
   display: flex;
@@ -144,6 +169,7 @@
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(30, 36, 47, 0.12);
   max-width: 540px;
+  animation: ocTextIn 0.7s 0.42s ease both;
 }
 
 .oc-search-icon {
@@ -189,6 +215,7 @@
   margin-top: 16px;
   font-size: 0.83rem;
   color: #6b7280;
+  animation: ocTextIn 0.7s 0.48s ease both;
 }
 
 .oc-hero-visual {
@@ -199,6 +226,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: ocVisualIn 0.95s 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .oc-hero-image-wrap {
@@ -208,6 +236,13 @@
   box-shadow: 0 24px 60px rgba(17, 24, 39, 0.26);
   border: 1px solid rgba(255, 255, 255, 0.45);
   transform: rotate(-2deg);
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
+  animation: ocFloatMain 6s ease-in-out infinite;
+}
+
+.oc-hero-image-wrap:hover {
+  transform: rotate(-1deg) translateY(-6px);
+  box-shadow: 0 30px 70px rgba(17, 24, 39, 0.32);
 }
 
 .oc-hero-image-wrap img {
@@ -274,6 +309,15 @@
   gap: 0;
   background: #1c1d1f;
   padding: 28px 7vw;
+  position: relative;
+}
+
+.oc-stats::before {
+  content: "";
+  position: absolute;
+  inset: auto 10% 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
 }
 
 .oc-stat {
@@ -282,7 +326,13 @@
   align-items: center;
   padding: 10px 40px;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
+  animation: ocRiseIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+.oc-stat:nth-child(1) { animation-delay: 0.08s; }
+.oc-stat:nth-child(2) { animation-delay: 0.14s; }
+.oc-stat:nth-child(3) { animation-delay: 0.2s; }
+.oc-stat:nth-child(4) { animation-delay: 0.26s; }
 
 .oc-stat:last-child {
   border-right: none;
@@ -387,11 +437,23 @@
   flex-direction: column;
   transition: box-shadow 0.25s, transform 0.25s;
   cursor: pointer;
+  transform-style: preserve-3d;
+  will-change: transform;
+  animation: ocCardIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+.oc-card:nth-child(1) { animation-delay: 0.05s; }
+.oc-card:nth-child(2) { animation-delay: 0.1s; }
+.oc-card:nth-child(3) { animation-delay: 0.15s; }
+.oc-card:nth-child(4) { animation-delay: 0.2s; }
+.oc-card:nth-child(5) { animation-delay: 0.25s; }
+.oc-card:nth-child(6) { animation-delay: 0.3s; }
+.oc-card:nth-child(7) { animation-delay: 0.35s; }
+.oc-card:nth-child(8) { animation-delay: 0.4s; }
 
 .oc-card:hover {
   box-shadow: 0 4px 28px rgba(0, 0, 0, 0.13);
-  transform: translateY(-4px);
+  transform: translateY(-6px) rotateX(2deg) rotateY(-2deg);
 }
 
 .oc-card-thumb {
@@ -580,7 +642,15 @@
   padding: 32px 24px;
   text-align: left;
   transition: box-shadow 0.25s, transform 0.25s;
+  animation: ocCardIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+.oc-feature-card:nth-child(1) { animation-delay: 0.06s; }
+.oc-feature-card:nth-child(2) { animation-delay: 0.12s; }
+.oc-feature-card:nth-child(3) { animation-delay: 0.18s; }
+.oc-feature-card:nth-child(4) { animation-delay: 0.24s; }
+.oc-feature-card:nth-child(5) { animation-delay: 0.3s; }
+.oc-feature-card:nth-child(6) { animation-delay: 0.36s; }
 
 .oc-feature-card:hover {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.09);
@@ -596,6 +666,12 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 18px;
+  transition: transform 0.28s ease, background 0.28s ease;
+}
+
+.oc-feature-card:hover .oc-feature-icon {
+  transform: translateY(-2px) scale(1.04);
+  background: #e6dcff;
 }
 
 .oc-feature-icon svg {
@@ -623,6 +699,20 @@
   background: linear-gradient(135deg, #1c1d1f 0%, #2d1b55 100%);
   padding: 80px 7vw;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.oc-cta::before {
+  content: "";
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(107, 114, 255, 0.32) 0%, rgba(107, 114, 255, 0) 72%);
+  top: -140px;
+  right: -90px;
+  pointer-events: none;
 }
 
 .oc-cta-inner {
@@ -685,6 +775,103 @@
 .oc-cta-secondary:hover {
   border-color: #fff;
   background: rgba(255, 255, 255, 0.08);
+}
+
+@keyframes ocFloatMain {
+  0%,
+  100% {
+    transform: rotate(-2deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-1.2deg) translateY(-8px);
+  }
+}
+
+@keyframes ocHeroSweep {
+  0% {
+    transform: translateX(-110%);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+@keyframes ocOrbDriftA {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(18px, 12px, 0);
+  }
+}
+
+@keyframes ocOrbDriftB {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-16px, -10px, 0);
+  }
+}
+
+@keyframes ocRiseIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ocTextIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ocVisualIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes ocCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes ocPageReveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* ── RESPONSIVE ───────────────────────────────────────── */
@@ -815,6 +1002,29 @@
   }
   .oc-tabs::-webkit-scrollbar {
     display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oc-page,
+  .oc-hero::after,
+  .oc-hero-content,
+  .oc-hero-kicker,
+  .oc-hero-heading,
+  .oc-hero-sub,
+  .oc-hero-actions,
+  .oc-search-bar,
+  .oc-hero-popular,
+  .oc-hero-visual,
+  .oc-hero-glow-a,
+  .oc-hero-glow-b,
+  .oc-hero-image-wrap,
+  .oc-floating-card,
+  .oc-stat,
+  .oc-card,
+  .oc-feature-card {
+    animation: none !important;
+    transition: none !important;
   }
 }
 

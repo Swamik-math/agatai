@@ -13,6 +13,43 @@ export default function Career() {
         className="hero-title"
       />
 
+      <section className="career-pay-hero" aria-label="Career hero">
+        <div className="career-pay-floating career-pay-card-a">
+          <span>Remote Roles</span>
+          <strong>24 Openings</strong>
+        </div>
+
+        <div className="career-pay-floating career-pay-card-b">
+          <span>Growth Track</span>
+          <strong>2x Promotions</strong>
+        </div>
+
+        <div className="career-pay-floating career-pay-card-c">
+          <span>Global Team</span>
+          <strong>22 Countries</strong>
+        </div>
+
+        <div className="career-pay-main-card" aria-hidden="true">
+          <div className="career-pay-chip chip-dark">Engineering</div>
+          <div className="career-pay-chip chip-green">Design</div>
+          <div className="career-pay-chip chip-blue">AI Research</div>
+          <div className="career-pay-chip chip-light">Product</div>
+        </div>
+
+        <p className="career-pay-kicker">AIGETAI Careers</p>
+        <h1>
+          Careers that feel
+          <span>effortless</span>
+        </h1>
+        <p className="career-pay-subtext">
+          Designed for builders who want ownership, velocity, and meaningful work from idea to impact.
+        </p>
+
+        <button className="career-pay-cta">Get started</button>
+      </section>
+
+      <hr className="section-divider" />
+
       <section className="career-video">
         <h2>Life at AIGETAI</h2>
         <video autoPlay loop muted playsInline className="career-video-player">

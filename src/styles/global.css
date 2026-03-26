@@ -1,11 +1,9 @@
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
-
 /* =========================
    GLOBAL RESET & BASE
 ========================= */
 :root {
-  --font-premium: "Roboto", sans-serif;
+  --font-premium: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 * {
