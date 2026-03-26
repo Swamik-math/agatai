@@ -357,15 +357,72 @@ export default function Blog() {
     ];
   };
 
+  const scrollToNews = () => {
+    const newsSection = document.getElementById("blog-news-grid");
+    if (!newsSection) {
+      return;
+    }
+    newsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <main className="blog-page">
       <section className="blog-shell">
-        <section className="blog-headline" aria-label="News intro">
-          <p className="blog-kicker">Latest AI + Tech News</p>
-          <h1>
-            Daily updates on AI breakthroughs, product launches, and engineering
-            shifts
-          </h1>
+        <section className="blog-hero" aria-label="Blog hero">
+          <div className="blog-hero-copy">
+            <p className="blog-kicker">Latest AI + Tech News</p>
+            <h1>AI stories that shape what teams build next</h1>
+            <p className="blog-hero-subtext">
+              Track product launches, model breakthroughs, and engineering
+              tactics in one sharp daily feed designed for builders.
+            </p>
+            <div className="blog-hero-actions">
+              <button
+                type="button"
+                className="blog-hero-cta primary"
+                onClick={() => setSelectedPost(featuredStory)}
+              >
+                Read Featured Story
+              </button>
+              <button
+                type="button"
+                className="blog-hero-cta secondary"
+                onClick={scrollToNews}
+              >
+                Explore All News
+              </button>
+            </div>
+            <div className="blog-hero-strip" aria-hidden="true">
+              <span>Fresh coverage every day</span>
+              <span className="hero-strip-dot" />
+              <span>Curated by editors + engineers</span>
+            </div>
+          </div>
+
+          <div className="blog-hero-visual" aria-hidden="true">
+            <span className="blog-orb orb-a" />
+            <span className="blog-orb orb-b" />
+            <article className="blog-hero-showcase">
+              <img
+                src={featuredStory.image}
+                alt=""
+                loading="lazy"
+                role="presentation"
+              />
+              <div className="blog-hero-showcase-overlay">
+                <span className="blog-pill">Top Story</span>
+                <p>{featuredStory.readTime}</p>
+              </div>
+            </article>
+            <article className="blog-float-card card-left">
+              <p>Today</p>
+              <h3>19 New Articles</h3>
+            </article>
+            <article className="blog-float-card card-right">
+              <p>Trending</p>
+              <h3>AI Infrastructure</h3>
+            </article>
+          </div>
         </section>
 
         <section className="blog-featured" aria-label="Featured story">
@@ -419,7 +476,11 @@ export default function Blog() {
           ))}
         </section>
 
-        <section className="blog-grid" aria-label="Latest news posts">
+        <section
+          id="blog-news-grid"
+          className="blog-grid"
+          aria-label="Latest news posts"
+        >
           {visiblePosts.map((post, index) => (
             <article
               className="blog-card blog-clickable"

@@ -7,5 +7,6 @@
 html, body {
   background: black;
   color: white;
-  font-family: Inter, Arial, sans-serif;
+  font-family: var(--font-premium);
 }
+

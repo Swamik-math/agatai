@@ -81,7 +81,7 @@
   font-size: 0.9rem;
   transition: color 0.2s ease;
   white-space: nowrap;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: var(--font-premium);
   font-weight: 300;
 }
 

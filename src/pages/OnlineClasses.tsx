@@ -174,30 +174,58 @@ export default function OnlineClasses() {
     <div className="oc-page">
 
       {/* ── HERO ─────────────────────────────────────────── */}
-      <section className="oc-hero" style={{ backgroundImage: `url(${heroImg})` }}>
-        <div className="oc-hero-overlay" />
+      <section className="oc-hero" aria-label="Online classes hero">
+        <div className="oc-hero-glow oc-hero-glow-a" />
+        <div className="oc-hero-glow oc-hero-glow-b" />
+
         <div className="oc-hero-content">
-          <p className="oc-hero-kicker">Expand your skills. Advance your career.</p>
-          <h1 className="oc-hero-heading">Learn Without Limits</h1>
+          <p className="oc-hero-kicker">Online learning studio</p>
+          <h1 className="oc-hero-heading">
+            Build Future-Ready Skills
+            <span>with immersive courses</span>
+          </h1>
           <p className="oc-hero-sub">
-            Join 500+ students mastering AI, Web Development, and Design
-            with expert-led courses built for the real world.
+            Learn AI, development, design, and data with real projects,
+            mentor support, and flexible timelines built for creators.
           </p>
+
+          <div className="oc-hero-actions">
+            <button className="oc-hero-primary" type="button">Explore Courses</button>
+            <button className="oc-hero-secondary" type="button">Watch Demo</button>
+          </div>
+
           <form className="oc-search-bar" onSubmit={handleSearch}>
             <svg className="oc-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
             <input
               type="text"
-              placeholder="Search for any course…"
+              placeholder="Search for any course..."
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
             />
             <button type="submit">Search</button>
           </form>
+
           <p className="oc-hero-popular">
-            <strong>Popular:</strong> React, Next.js, Python, Figma, Machine Learning
+            Popular: React, Next.js, Python, Figma, Machine Learning
           </p>
+        </div>
+
+        <div className="oc-hero-visual" aria-hidden="true">
+          <div className="oc-hero-image-wrap">
+            <img src={heroImg} alt="" loading="lazy" />
+          </div>
+
+          <article className="oc-floating-card oc-floating-card-top">
+            <p>Live cohort starts</p>
+            <h3>April 18</h3>
+          </article>
+
+          <article className="oc-floating-card oc-floating-card-bottom">
+            <p>Completion rate</p>
+            <h3>94%</h3>
+          </article>
         </div>
       </section>
 

@@ -121,10 +121,10 @@ export default function Home() {
 
       <WhatWeDo />
 
-      {/* pizza carousile */}
+      {/* pizza carousile
       <section className="my-12 carousel-section">
         <PizzaCarousel />
-      </section>
+      </section> */}
 
       {/* Video Background Section */}
       <section className="video-section">
