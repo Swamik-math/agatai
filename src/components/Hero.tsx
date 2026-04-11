@@ -1,11 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 import {
   easeOut,
   motion,
   useScroll,
-  useTransform,
   useVelocity,
   useMotionValueEvent,
-  useSpring,
 } from "framer-motion";
 
 import demo1 from "../assets/demo1.mp4";
@@ -15,7 +15,7 @@ import demo4 from "../assets/demo4.mp4";
 import demo5 from "../assets/demo5.mp4";
 import demo6 from "../assets/demo6.mp4";
 import "./Hero.css";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 const videos = [
   { src: demo1, x: "200%", y: "-200%", delay: 0, scale: 1 },
@@ -30,12 +30,7 @@ export default function Hero() {
   const { scrollY } = useScroll();
   const velocity = useVelocity(scrollY);
   const [animationSpeed, setAnimationSpeed] = useState(1);
-
-  // Smooth spring animation for speed changes
-  const smoothSpeed = useSpring(animationSpeed, {
-    stiffness: 100,
-    damping: 30,
-  });
+  const navigate = useNavigate();
 
   // Update animation speed based on scroll velocity
   useMotionValueEvent(velocity, "change", (latest) => {
@@ -102,7 +97,9 @@ export default function Hero() {
 
         <div className="hero-actions">
           <button className="primary">Start Your Project</button>
-          <button className="secondary">Explore Our Work</button>
+          <button className="secondary" onClick={() => navigate("/explore")}>
+            Explore our work
+          </button>
         </div>
       </motion.div>
     </section>

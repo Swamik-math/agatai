@@ -2,6 +2,7 @@ import { useRef } from "react";
 
 import Hero from "../components/Hero";
 
+
 import Footer from "../components/Footer";
 import videoBg from "../assets/videoplayback.mp4";
 import CircularGallery from "../pages/CircularGallery";
