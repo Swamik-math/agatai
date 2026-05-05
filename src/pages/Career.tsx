@@ -1,8 +1,101 @@
+import { createPortal } from "react-dom";
+import { useEffect, useState } from "react";
 import "./Career.css";
 import BlurText from "../pages/BlurText";
 import CircularGallery from "../pages/CircularGallery";
 
+type JobOpening = {
+  title: string;
+  type: string;
+  location: string;
+  team: string;
+  summary: string;
+};
+
+const openPositions: JobOpening[] = [
+  {
+    title: "Frontend Developer",
+    type: "Full Time",
+    location: "Remote",
+    team: "Product Engineering",
+    summary:
+      "Build polished interfaces and shipping experiences for AI-powered products.",
+  },
+  {
+    title: "Backend Developer",
+    type: "Full Time",
+    location: "Remote",
+    team: "Platform",
+    summary:
+      "Design reliable APIs, data services, and scalable application infrastructure.",
+  },
+  {
+    title: "UI/UX Designer",
+    type: "Full Time",
+    location: "Remote",
+    team: "Design",
+    summary:
+      "Shape intuitive user journeys, visual systems, and product storytelling.",
+  },
+  {
+    title: "AI Research Engineer",
+    type: "Full Time",
+    location: "Hybrid",
+    team: "Research",
+    summary:
+      "Prototype model workflows, evaluation systems, and agentic experiences.",
+  },
+  {
+    title: "Product Manager",
+    type: "Full Time",
+    location: "Remote",
+    team: "Product",
+    summary:
+      "Translate customer needs into crisp roadmaps and measurable launches.",
+  },
+  {
+    title: "DevOps Engineer",
+    type: "Full Time",
+    location: "Remote",
+    team: "Infrastructure",
+    summary:
+      "Own CI/CD, deployments, observability, and production readiness.",
+  },
+];
+
 export default function Career() {
+  const [selectedJob, setSelectedJob] = useState<JobOpening | null>(null);
+
+  useEffect(() => {
+    if (!selectedJob) {
+      return;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [selectedJob]);
+
+  const handleApplicationSubmit = (
+    event: React.FormEvent<HTMLFormElement>,
+  ) => {
+    event.preventDefault();
+    setSelectedJob(null);
+  };
+
+  const scrollToOpenPositions = () => {
+    const section = document.getElementById("career-open-positions");
+
+    if (!section) {
+      return;
+    }
+
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <div className="careers-page">
       <BlurText
@@ -170,31 +263,28 @@ export default function Career() {
         </div>
       </section>
 
-      <section className="career-jobs">
+      <section className="career-jobs" id="career-open-positions">
         <h2>Open Positions</h2>
 
-        <div className="job-card">
-          <div>
-            <h3>Frontend Developer</h3>
-            <p>Full Time • Remote</p>
-          </div>
-          <button>Apply</button>
-        </div>
-
-        <div className="job-card">
-          <div>
-            <h3>Backend Developer</h3>
-            <p>Full Time • Remote</p>
-          </div>
-          <button>Apply</button>
-        </div>
-
-        <div className="job-card">
-          <div>
-            <h3>UI/UX Designer</h3>
-            <p>Full Time • Remote</p>
-          </div>
-          <button>Apply</button>
+        <div className="job-grid">
+          {openPositions.map((job) => (
+            <article className="job-card" key={job.title}>
+              <div>
+                <div className="job-card-topline">
+                  <span>{job.team}</span>
+                  <span>{job.location}</span>
+                </div>
+                <h3>{job.title}</h3>
+                <p>
+                  {job.type} • {job.location}
+                </p>
+                <p className="job-summary">{job.summary}</p>
+              </div>
+              <button type="button" onClick={() => setSelectedJob(job)}>
+                Apply
+              </button>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -239,8 +329,98 @@ export default function Career() {
         <p>
           Explore exciting opportunities and become part of a team building the future of AI-driven innovation.
         </p>
-        <button>View Open Positions</button>
+        <button type="button" onClick={scrollToOpenPositions}>
+          View Open Positions
+        </button>
       </section>
+
+      {selectedJob &&
+        createPortal(
+          <div
+            className="career-apply-overlay"
+            onClick={() => setSelectedJob(null)}
+          >
+            <div
+              className="career-apply-modal"
+              onClick={(event) => event.stopPropagation()}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="career-apply-title"
+            >
+              <div className="career-apply-header">
+                <div>
+                  <p className="career-apply-kicker">Apply for this role</p>
+                  <h2 id="career-apply-title">{selectedJob.title}</h2>
+                  <p className="career-apply-meta">
+                    {selectedJob.type} • {selectedJob.location} • {selectedJob.team}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  className="career-apply-close"
+                  onClick={() => setSelectedJob(null)}
+                  aria-label="Close application form"
+                >
+                  Close
+                </button>
+              </div>
+
+              <form className="career-apply-form" onSubmit={handleApplicationSubmit}>
+                <div className="apply-grid">
+                  <label>
+                    Full Name
+                    <input type="text" name="fullName" required />
+                  </label>
+                  <label>
+                    Email Address
+                    <input type="email" name="email" required />
+                  </label>
+                  <label>
+                    Phone Number
+                    <input type="tel" name="phone" required />
+                  </label>
+                  <label>
+                    Current Location
+                    <input type="text" name="location" required />
+                  </label>
+                  <label>
+                    Portfolio or LinkedIn
+                    <input type="url" name="portfolio" placeholder="https://" />
+                  </label>
+                  <label>
+                    Years of Experience
+                    <input type="number" name="experience" min="0" required />
+                  </label>
+                </div>
+
+                <label>
+                  Cover Letter
+                  <textarea
+                    name="coverLetter"
+                    rows={5}
+                    placeholder="Tell us why you are a strong fit for this role"
+                    required
+                  />
+                </label>
+
+                <label>
+                  Upload Resume
+                  <input type="file" name="resume" accept=".pdf,.doc,.docx" required />
+                </label>
+
+                <div className="career-apply-actions">
+                  <button type="button" className="secondary" onClick={() => setSelectedJob(null)}>
+                    Cancel
+                  </button>
+                  <button type="submit" className="primary">
+                    Submit Application
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>,
+          document.body,
+        )}
     </div>
   );
 }

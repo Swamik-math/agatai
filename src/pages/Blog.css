@@ -460,14 +460,12 @@
   background: rgba(0, 0, 0, 0.62);
   backdrop-filter: blur(4px);
   display: flex;
+  inset: 0;
   justify-content: center;
-  left: 0;
   padding: 1.2rem;
   position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  height: 100%;
+  z-index: 10000;
+  overflow-y: auto;
 }
 
 .blog-modal {
@@ -479,7 +477,7 @@
   padding: 1rem 1rem 1.25rem;
   position: relative;
   width: min(840px, 100%);
-  margin-top: 5%;
+  margin: 0;
 }
 
 .blog-modal-close {

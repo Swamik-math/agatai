@@ -358,6 +358,7 @@
   padding: 60px 7vw;
   max-width: 1400px;
   margin: 0 auto;
+    scroll-margin-top: 96px;
 }
 
 .oc-courses-header {

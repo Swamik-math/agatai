@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import { useEffect, useMemo, useState } from "react";
 import "./Blog.css";
 
@@ -513,48 +514,52 @@ export default function Blog() {
           ))}
         </section>
 
-        {selectedPost && (
-          <div
-            className="blog-modal-overlay"
-            onClick={() => setSelectedPost(null)}
-          >
-            <article
-              className="blog-modal"
-              onClick={(event) => event.stopPropagation()}
-              aria-label="News detail"
+        {selectedPost &&
+          createPortal(
+            <div
+              className="blog-modal-overlay"
+              onClick={() => setSelectedPost(null)}
             >
-              <button
-                type="button"
-                className="blog-modal-close"
-                onClick={() => setSelectedPost(null)}
-                aria-label="Close news detail"
+              <article
+                className="blog-modal"
+                onClick={(event) => event.stopPropagation()}
+                aria-label="News detail"
               >
-                Close
-              </button>
+                <button
+                  type="button"
+                  className="blog-modal-close"
+                  onClick={() => setSelectedPost(null)}
+                  aria-label="Close news detail"
+                >
+                  Close
+                </button>
 
-              <div className="blog-modal-image-wrap">
-                <img src={selectedPost.image} alt={selectedPost.title} />
-              </div>
+                <div className="blog-modal-image-wrap">
+                  <img src={selectedPost.image} alt={selectedPost.title} />
+                </div>
 
-              <h2>{selectedPost.title}</h2>
+                <h2>{selectedPost.title}</h2>
 
-              <div className="blog-meta blog-modal-meta">
-                <span className="blog-pill subdued">
-                  {selectedPost.category}
-                </span>
-                <time dateTime={selectedPost.dateIso}>
-                  {selectedPost.dateLabel}
-                </time>
-                <span className="blog-dot" aria-hidden="true" />
-                <span className="blog-read-time">{selectedPost.readTime}</span>
-              </div>
+                <div className="blog-meta blog-modal-meta">
+                  <span className="blog-pill subdued">
+                    {selectedPost.category}
+                  </span>
+                  <time dateTime={selectedPost.dateIso}>
+                    {selectedPost.dateLabel}
+                  </time>
+                  <span className="blog-dot" aria-hidden="true" />
+                  <span className="blog-read-time">
+                    {selectedPost.readTime}
+                  </span>
+                </div>
 
-              {getPostDetails(selectedPost).map((paragraph, paragraphIndex) => (
-                <p key={`${selectedPost.id}-${paragraphIndex}`}>{paragraph}</p>
-              ))}
-            </article>
-          </div>
-        )}
+                {getPostDetails(selectedPost).map((paragraph, paragraphIndex) => (
+                  <p key={`${selectedPost.id}-${paragraphIndex}`}>{paragraph}</p>
+                ))}
+              </article>
+            </div>,
+            document.body,
+          )}
       </section>
 
       <section className="subscribe-section" aria-label="News intro">

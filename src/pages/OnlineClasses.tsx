@@ -156,6 +156,23 @@ export default function OnlineClasses() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchInput, setSearchInput] = useState("");
 
+  const scrollToCourses = () => {
+    const coursesSection = document.getElementById("oc-courses");
+
+    if (!coursesSection) {
+      return;
+    }
+
+    coursesSection.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const browseAllCourses = () => {
+    setActiveCategory("All");
+    setSearchQuery("");
+    setSearchInput("");
+    scrollToCourses();
+  };
+
   const filtered = COURSES.filter((c) => {
     const matchCat = activeCategory === "All" || c.category === activeCategory;
     const matchSearch =
@@ -190,7 +207,9 @@ export default function OnlineClasses() {
           </p>
 
           <div className="oc-hero-actions">
-            <button className="oc-hero-primary" type="button">Explore Courses</button>
+            <button className="oc-hero-primary" type="button" onClick={scrollToCourses}>
+              Explore Courses
+            </button>
             <button className="oc-hero-secondary" type="button">Watch Demo</button>
           </div>
 
@@ -240,7 +259,7 @@ export default function OnlineClasses() {
       </section>
 
       {/* ── COURSES ──────────────────────────────────────── */}
-      <section className="oc-courses">
+      <section className="oc-courses" id="oc-courses">
         <div className="oc-courses-header">
           <h2>
             {activeCategory === "All" ? "All Courses" : activeCategory}
@@ -384,7 +403,9 @@ export default function OnlineClasses() {
           <p>Join thousands of students already building in-demand skills with AIGETAI.</p>
           <div className="oc-cta-actions">
             <button className="oc-cta-primary">Get Started Free</button>
-            <button className="oc-cta-secondary">Browse All Courses</button>
+            <button className="oc-cta-secondary" type="button" onClick={browseAllCourses}>
+              Browse All Courses
+            </button>
           </div>
         </div>
       </section>
